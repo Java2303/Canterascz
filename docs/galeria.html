@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex Maestres Consejeros - Cantera #75024</title>
+    <link rel="icon" href="img/logo.png" type="image/png" />
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+<style>
+    /* Carrusel (fade) para galería de líderes */
+    .carousel { max-width: 1000px; margin: 1rem auto 0 auto; }
+    .carousel-track { position: relative; display: grid; grid-template-areas: 'stack'; overflow: hidden; }
+    .carousel-track > * { grid-area: stack; opacity: 0; transition: opacity 400ms ease; margin: 0; display: flex; justify-content: center; }
+    .carousel-track > *.active { opacity: 1; }
+    .carousel figure { margin: 0; text-align: center; }
+    .carousel-nav { display: flex; justify-content: space-between; gap: 1rem; margin: 0.5rem auto 0; max-width: 280px; }
+    .carousel-nav button { background: var(--color-naranja); color: #fff; border: none; border-radius: 999px; width: 44px; height: 44px; font-size: 1.4rem; cursor: pointer; box-shadow: 0 4px 12px rgba(255,111,0,0.35); }
+    .carousel-nav button:hover { filter: brightness(0.95); }
+    .carousel-nav button:active { transform: scale(0.98); }
+  </style>
+<style>
+    /* Overrides: imagen grande centrada y descripción debajo */
+    .carousel .maestro-card {
+      max-width: 920px;
+      margin: 0 auto;
+      background: transparent;
+      box-shadow: none;
+      padding: 0;
+      text-align: center;
+    }
+    .carousel .maestro-card img {
+      width: 100%;
+      max-width: 780px;
+      max-height: 70vh;
+      height: auto;
+      object-fit: contain;
+      border-radius: 14px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+    }
+    .carousel .maestro-card figcaption {
+      margin-top: 0.85rem;
+      font-size: 1.05rem;
+      line-height: 1.4;
+      color: var(--color-negro);
+      background: transparent;
+      padding: 0 0.5rem;
+    }
+    /* Asegurar que el slide apila en bloque y centra */
+    .carousel-track > * { display: block; }
+  </style>
+</head>
+<body>
+    <header>
+        <nav>
+          <div class="logo-container">
+            <img src="img/logo.png" alt="Cantera #75024 Logo" height="60" width="60">
+            <a href="index.html" class="logo">Cantera #75024</a>
+          </div>
+          <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu">
+            <span>&#9776;</span>
+          </button>
+          <ul id="main-menu">
+            <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+            <li><a href="actividades.html">Actividades</a></li>
+            <li><a href="galeria.html" class="active">Homenaje a Nuestros Líderes</a></li>
+            <li><a href="futbol7.html">Campeonato</a></li>
+            <li><a href="ubicacion.html">Ubicación</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <section class="content" aria-label="Navegación de galería">
+        <nav class="subnav">
+          <a href="#maestres-consejeros" class="btn btn-secondary">Maestres Consejeros</a>
+          <a href="#hermanos-honorificos" class="btn btn-secondary">Hermanos Honoríficos</a>
+        </nav>
+      </section>
+
+      <section class="content" id="maestres-consejeros">
+        <h1>Maestres Consejeros</h1>
+        <p>Reconociendo a quienes han guiado nuestro capítulo con dedicación y compromiso.</p>
+        <div class="carousel" data-carousel="maestres">
+          <div class="carousel-track">
+          <figure class="maestro-card">
+            <img src="img/flavio.png" alt="Flavio Palma" />
+            <figcaption>
+              <strong>Flavio Palma</strong><br />
+              Gestión 2012<br>
+              Maestre Consejero Departamental<br>
+              Ilustre Comendador Caballero
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/luis-alberto-mendez.jpg" alt="Luis Alberto Méndez" />
+            <figcaption>
+              <strong>Luis Alberto Méndez</strong><br />
+              Gestión I/2013
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/hugo-roberto-ibanez.jpg" alt="Hugo Roberto Ibáñez" />
+            <figcaption>
+              <strong>Hugo Roberto Ibáñez</strong><br />
+              Gestión II/2013
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/richard-paniagua.jpg" alt="Richard Paniagua" />
+            <figcaption>
+              <strong>Richard Paniagua</strong><br />
+              Gestión I/2014<br>
+              Ilustre Comendador Caballero
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/leonardo-alvarez.jpg" alt="Leonardo Álvarez" />
+            <figcaption>
+              <strong>Leonardo Álvarez</strong><br />
+              Gestión II/2014
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/luis-fernando-mendez.jpg" alt="Luis Fernando Méndez" />
+            <figcaption>
+              <strong>Luis Fernando Méndez</strong><br />
+              Gestión I/2015<br>
+              Ilustre Comendador Caballero
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/carlos-daniel-viruez.jpg" alt="Carlos Daniel Viruez" />
+            <figcaption>
+              <strong>Carlos Daniel Viruez</strong><br />
+              Gestión II/2015
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/diego-ayoroa.jpg" alt="Diego Ayoroa" />
+            <figcaption>
+              <strong>Diego Ayoroa</strong><br />
+              Gestión I/2016
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/danilo-ferreira.jpg" alt="Danilo Ferreira" />
+            <figcaption>
+              <strong>Danilo Ferreira</strong><br />
+              Gestión II/2016
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/christian-gutierrez.jpg" alt="Christian Gutiérrez" />
+            <figcaption>
+              <strong>Christian Gutiérrez</strong><br />
+              Gestión I/2017
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/luis-adrian-cuellar.jpg" alt="Luis Adrián Cuéllar" />
+            <figcaption>
+              <strong>Luis Adrián Cuéllar</strong><br />
+              Gestión II/2017
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/raul-cuellar.jpg" alt="Raúl Cuéllar" />
+            <figcaption>
+              <strong>Raúl Cuéllar</strong><br />
+              Gestión 2018
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/fernando-ballivian.jpg" alt="Fernando Ballivián" />
+            <figcaption>
+              <strong>Fernando Ballivián</strong><br />
+              Gestión I/2019
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/eduardo-suarez-bort.jpg" alt="Eduardo Suárez Bort" />
+            <figcaption>
+              <strong>Eduardo Suárez Bort</strong><br />
+              Gestión II/2019
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/alejandro-moreno.jpg" alt="Alejandro Moreno" />
+            <figcaption>
+              <strong>Alejandro Moreno</strong><br />
+              Gestión 2020
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/sebastian-joffre.jpg" alt="Sebastián Joffré" />
+            <figcaption>
+              <strong>Sebastián Joffré</strong><br />
+              Gestión I/2021
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/aldo-fabio-zelada.jpg" alt="Aldo Fabio Zelada" />
+            <figcaption>
+              <strong>Aldo Fabio Zelada</strong><br />
+              Gestión II/2021
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/erwin-mendoza.jpg" alt="Erwin Mendoza" />
+            <figcaption>
+              <strong>Erwin Mendoza</strong><br />
+              Gestión I/2022
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/ernesto-montecinos.jpg" alt="Ernesto Montecinos" />
+            <figcaption>
+              <strong>Ernesto Montecinos</strong><br />
+              Gestión II/2022
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/lucas.png" alt="Lucas Antonio Vaca Díez" />
+            <figcaption>
+              <strong>Lucas Antonio Vaca Díez</strong><br />
+              Gestión I/2023<br>
+              Mentor Escudero<br>
+              Gestión I/2025 - II/2025
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/jorge-alberto-escalante.jpg" alt="Jorge Alberto Escalante" />
+            <figcaption>
+              <strong>Jorge Alberto Escalante</strong><br />
+              Gestión II/2023
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/santander.png" alt="Luis Gabriel Santander" />
+            <figcaption>
+              <strong>Luis Gabriel Santander</strong><br />
+              Gestión I/2024
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/israel.png" alt="Israel Escalante" />
+            <figcaption>
+              <strong>Israel Escalante</strong><br />
+              Gestión II/2024
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/samuel-parada.jpg" alt="Samuel Parada" />
+            <figcaption>
+              <strong>Samuel Parada</strong><br />
+              Gestión I/2025
+            </figcaption>
+          </figure>
+          <figure class="maestro-card">
+            <img src="img/samuel-parada.jpg" alt="Luis Saucedo" />
+            <figcaption>
+              <strong>Luis Andrés Saucedo</strong><br />
+              Gestión II/2025
+            </figcaption>
+          </figure>
+        </div>
+          <div class="carousel-nav">
+            <button class="carousel-prev" aria-label="Anterior">‹</button>
+            <button class="carousel-next" aria-label="Siguiente">›</button>
+          </div>
+        </div>
+      </section>
+      <section class="content" id="hermanos-honorificos">
+        <h1>Hermanos Honoríficos</h1>
+        <p>Reconociendo a quienes han apoyado a nuestro capítulo con mucho amor y dedicación.</p>
+        <div class="carousel" data-carousel="honorificos">
+          <div class="carousel-track">
+        <figure class="maestro-card">
+          <img src="img/samuel-parada.jpg" alt="Nicolás Ortiz"/>
+          <figcaption>
+            <strong>Enzo Nicolás Ortiz</strong><br />
+            Miembro de la Corte Chevalier
+          </figcaption>
+        </figure>
+        <figure class="maestro-card">
+          <img src="img/samuel-parada.jpg" alt="Luis Cruz"/>
+          <figcaption>
+            <strong>Luis Alberto Cruz</strong><br />
+            Heraldo Departamental
+          </figcaption>
+        </figure>
+        <figure class="maestro-card">
+          <img src="img/samuel-parada.jpg" alt="Bruno Gutiérrez"/>
+          <figcaption>
+            <strong>Bruno Gutiérrez</strong><br/>
+            Miembro del Consejo Consultivo<br/>
+            Capítulo “Andrey Vagoluvski” Moscú, Rusia
+          </figcaption>
+        </figure>
+        <figure class="maestro-card">
+          <img src="img/samuel-parada.jpg" alt="Óscar Mendoza"/>
+          <figcaption>
+            <strong>Óscar Mendoza</strong><br />
+            Miembro del Consejo Consultivo<br/>
+            Capítulo “Andrey Vagoluvski” Moscú, Rusia
+          </figcaption>
+        </figure>
+      </div>
+          <div class="carousel-nav">
+            <button class="carousel-prev" aria-label="Anterior">‹</button>
+            <button class="carousel-next" aria-label="Siguiente">›</button>
+          </div>
+        </div>
+      </section>
+    <footer>
+        <p>&copy; <span id="year"></span> Cantera #75024 - DeMolay Internacional</p>
+    </footer>
+    <script>
+      document.getElementById("year") && (document.getElementById("year").textContent = new Date().getFullYear());
+      const menuToggle = document.querySelector('.menu-toggle');
+      const menu = document.getElementById('main-menu');
+      menuToggle.addEventListener('click', function() {
+        menu.classList.toggle('show');
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !expanded);
+      });
+
+      // Carruseles de galería (fade)
+      document.querySelectorAll('[data-carousel]')?.forEach(carousel => {
+        const track = carousel.querySelector('.carousel-track');
+        const slides = Array.from(track.children);
+        const prev = carousel.querySelector('.carousel-prev');
+        const next = carousel.querySelector('.carousel-next');
+        let index = 0;
+        function updateHeight(){ track.style.height = slides[index].offsetHeight + 'px'; }
+        function setActive(i){
+          slides[index].classList.remove('active');
+          index = (i + slides.length) % slides.length;
+          slides[index].classList.add('active');
+          updateHeight();
+        }
+        slides.forEach((s,i)=> s.classList.toggle('active', i===0));
+        window.addEventListener('load', updateHeight);
+        if (typeof ResizeObserver !== 'undefined'){
+          const ro = new ResizeObserver(()=> updateHeight());
+          slides.forEach(s=> ro.observe(s));
+        } else {
+          window.addEventListener('resize', updateHeight);
+        }
+        prev?.addEventListener('click', ()=> setActive(index-1));
+        next?.addEventListener('click', ()=> setActive(index+1));
+        carousel.setAttribute('tabindex','0');
+        carousel.addEventListener('keydown', (e)=>{
+          if (e.key==='ArrowLeft') prev?.click();
+          if (e.key==='ArrowRight') next?.click();
+        });
+      });
+    </script>
+</body>
+</html>

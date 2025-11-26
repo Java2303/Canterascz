@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cantera #75024</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/logo.png" type="image/png" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+<style>
+    /* Carrusel (fade) para DeMolay en Santa Cruz */
+    .carousel { max-width: 1000px; margin: 1rem auto 0 auto; }
+    .carousel-track { position: relative; display: grid; grid-template-areas: 'stack'; overflow: hidden; }
+    .carousel .slide { grid-area: stack; opacity: 0; transition: opacity 400ms ease; }
+    .carousel .slide.active { opacity: 1; }
+    .carousel figure { margin: 0; text-align: center; }
+    .carousel img, .carousel video { width: 100%; height: auto; max-height: 70vh; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 18px rgba(0,0,0,0.15); }
+    .carousel-nav { display: flex; justify-content: space-between; gap: 1rem; margin: 0.5rem auto 0; max-width: 280px; }
+    .carousel-nav button { background: var(--color-naranja); color: #fff; border: none; border-radius: 999px; width: 44px; height: 44px; font-size: 1.4rem; cursor: pointer; box-shadow: 0 4px 12px rgba(255,111,0,0.35); }
+    .carousel-nav button:hover { filter: brightness(0.95); }
+    .carousel-nav button:active { transform: scale(0.98); }
+  </style>
+<style>
+    /* Mejoras de contraste del botón en el hero */
+    .hero .btn-primary {
+      background: #ffffff;
+      color: var(--color-naranja);
+      border: 2px solid rgba(255,111,0,0.35);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15), 0 4px 14px rgba(255,111,0,0.25);
+    }
+    .hero .btn-primary:hover {
+      background: var(--color-naranja);
+      color: #ffffff;
+      box-shadow: 0 10px 24px rgba(255,111,0,0.45);
+    }
+    .hero .btn-primary:active {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 6px 16px rgba(255,111,0,0.35);
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <nav>
+          <div class="logo-container">
+            <img src="img/logo.png" alt="Cantera #75024 Logo" height="60" width="60">
+            <a href="index.html" class="logo">Cantera #75024</a>
+          </div>
+          <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu">
+            <span>&#9776;</span>
+          </button>
+          <ul id="main-menu">
+            <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+            <li><a href="actividades.html">Actividades</a></li>
+            <li><a href="galeria.html">Homenaje a Nuestros Líderes</a></li>
+            <li><a href="futbol7.html">Campeonato</a></li>
+            <li><a href="ubicacion.html">Ubicación</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div style="position:relative;width:100vw;min-height:0;">
+        <img src="img/reunion.jpg" alt="Fondo Cantera" class="hero-bg-img" />
+        <div class="hero-bg-overlay"></div>
+      </div>
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Bienvenidos a <span class="highlight">Cantera</span></h1>
+          <p>Un capítulo orgulloso de <strong>DeMolay Internacional</strong>, ubicado en el corazón del campamento de Santa Cruz, Bolivia.</p>
+          <p class="tagline">Aquí, <em>forjamos líderes auténticos</em> a través de la amistad sincera, el respeto profundo y el servicio apasionado.</p>
+          <a href="quienes-somos.html" class="btn btn-primary">Descubre nuestra historia</a>
+        </div>
+        <div class="hero-visual">
+          <img src="img/logo.png" alt="Jóvenes de Cantera en hermandad" loading="lazy">
+        </div>
+      </section>
+      
+      <section class="intro">
+        <h2>¿Por qué ser parte de Cantera?</h2>
+        <p>Porque aquí no solo formamos jóvenes, <strong>formamos hermanos</strong>.
+          En Cantera te brindamos un espacio para crecer, aprender y transformar tu comunidad con valores sólidos y amistad verdadera.</p>
+        <ul class="features-list">
+          <li><i class="fa-solid fa-handshake-angle"></i> Fraternidad que inspira</li>
+          <li><i class="fa-solid fa-chalkboard-user"></i> Liderazgo y capacitación constante</li>
+          <li><i class="fa-solid fa-heart"></i> Servicio comprometido con la comunidad</li>
+          <li><i class="fa-solid fa-trophy"></i> Espíritu competitivo y triunfador</li>
+        </ul>
+        <a href="futbol7.html" class="btn btn-secondary">Conoce nuestra historia futbolera</a>
+      </section>
+      
+      <!-- Sección ¿Qué es DeMolay? -->
+      <section class="que-es-demolay content" style="margin-top:2.5rem;">
+        <h2>¿Qué es DeMolay?</h2>
+        <p>
+          DeMolay es una organización internacional para jóvenes que fomenta el liderazgo, la amistad y el servicio a la comunidad. A través de actividades formativas, sociales y solidarias, ayuda a sus miembros a convertirse en mejores ciudadanos y personas, promoviendo valores como la fraternidad, el respeto y la responsabilidad.
+        </p>
+        <p>
+          En DeMolay, miles de jóvenes en todo el mundo encuentran un espacio para crecer, hacer amigos y dejar una huella positiva en su entorno.
+        </p>
+      </section>
+      
+      <!-- Galería DeMolay Bolivia -->
+      <section class="galeria-demolay content" style="margin-top:1.5rem;">
+        <h2>DeMolay en Santa Cruz</h2>
+        <div class="carousel" data-carousel="demolay">
+          <div class="carousel-track">
+            <figure class="slide"><img src="img/demolay-bolivia-1.jpg" alt="DeMolay Bolivia 1" /></figure>
+            <figure class="slide"><img src="img/demolay-bolivia-2.jpg" alt="DeMolay Bolivia 2" /></figure>
+            <figure class="slide"><img src="img/demolay-bolivia-3.jpg" alt="DeMolay Bolivia 3" /></figure>
+          </div>
+          <div class="carousel-nav">
+            <button class="carousel-prev" aria-label="Anterior">‹</button>
+            <button class="carousel-next" aria-label="Siguiente">›</button>
+          </div>
+        </div>
+      </section>
+      
+      <section class="valores-demolay content" style="margin-top:2.5rem;">
+        <h2>Valores y Principios DeMolay</h2>
+        <div class="valores-demolay-grid">
+          <div class="valor-item">
+            <img src="img/amor.png" alt="Amor Filial" />
+            <h3>Amor Filial</h3>
+            <p>El amor y respeto profundo hacia los padres y la familia, base de todo buen ciudadano y DeMolay.</p>
+          </div>
+          <div class="valor-item">
+            <img src="img/reverencia.png" alt="Reverencia por las Cosas Sagradas" />
+            <h3>Reverencia por las Cosas Sagradas</h3>
+            <p>La fe y el respeto por lo espiritual, promoviendo la tolerancia y la reflexión en la vida diaria.</p>
+          </div>
+          <div class="valor-item">
+            <img src="img/cortesia.png" alt="Cortesía" />
+            <h3>Cortesía</h3>
+            <p>La amabilidad y el respeto distinguen a un DeMolay en su trato con los demás.</p>
+          </div>
+          <div class="valor-item">
+            <img src="img/compañerismo.png" alt="Compañerismo" />
+            <h3>Compañerismo</h3>
+            <p>El apoyo mutuo y la solidaridad fortalecen la hermandad y el crecimiento personal.</p>
+          </div>
+          <div class="valor-item">
+            <img src="img/fidelidad.png" alt="Fidelidad" />
+            <h3>Fidelidad</h3>
+            <p>La lealtad a los principios, a la familia y a los amigos es un pilar fundamental en la vida DeMolay.</p>
+          </div>
+          <div class="valor-item">
+            <img src="img/pureza.png" alt="Pureza" />
+            <h3>Pureza</h3>
+            <p>Buscar la pureza de pensamiento, palabra y acción para ser mejores cada día.</p>
+          </div>
+          <div class="valor-item">
+            <img src="img/patriotismo.png" alt="Patriotismo" />
+            <h3>Patriotismo</h3>
+            <p>El amor y el compromiso con la patria, trabajando por el bien común y el progreso de la sociedad.</p>
+          </div>
+        </div>
+      </section>
+
+    <footer>
+        <p>&copy; <span id="year"></span> Cantera #75024 - DeMolay Internacional</p>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+        // Menú hamburguesa responsive
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menu = document.getElementById('main-menu');
+        menuToggle.addEventListener('click', function() {
+          menu.classList.toggle('show');
+          const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', !expanded);
+        });
+    // Carrusel fade (DeMolay en Santa Cruz)
+        document.querySelectorAll('[data-carousel]')?.forEach(carousel => {
+          const track = carousel.querySelector('.carousel-track');
+          const slides = Array.from(track.querySelectorAll('.slide'));
+          const prev = carousel.querySelector('.carousel-prev');
+          const next = carousel.querySelector('.carousel-next');
+          let index = 0;
+          function updateHeight() { track.style.height = slides[index].offsetHeight + 'px'; }
+          function setActive(i) {
+            slides[index].classList.remove('active');
+            index = (i + slides.length) % slides.length;
+            slides[index].classList.add('active');
+            updateHeight();
+          }
+          slides.forEach((s,i)=> s.classList.toggle('active', i===0));
+          window.addEventListener('load', updateHeight);
+          if (typeof ResizeObserver !== 'undefined') {
+            const ro = new ResizeObserver(() => updateHeight());
+            slides.forEach(s => ro.observe(s));
+          } else {
+            window.addEventListener('resize', updateHeight);
+          }
+          prev?.addEventListener('click', () => setActive(index - 1));
+          next?.addEventListener('click', () => setActive(index + 1));
+          carousel.setAttribute('tabindex','0');
+          carousel.addEventListener('keydown', (e)=>{ if (e.key==='ArrowLeft') prev?.click(); if (e.key==='ArrowRight') next?.click(); });
+        });
+    // Ajustar fondo del hero para que quede detrás, con padding arriba y abajo
+        (function(){
+          function sizeHeroBg(){
+            const hero = document.querySelector('.hero');
+            const bg = document.querySelector('.hero-bg-img');
+            const ov = document.querySelector('.hero-bg-overlay');
+            if(!hero || !bg || !ov) return;
+            const container = bg.parentElement;
+
+            const extraTop = 40;     // padding extra que se verá por encima del cuadro
+            const extraBottom = 0;  // padding extra que se verá por debajo del cuadro
+            const heroH = hero.offsetHeight;
+
+            // Altura total del fondo: arriba + hero + abajo
+            const totalH = heroH + extraTop + extraBottom;
+
+            // Asignar alturas
+            [bg, ov, container].forEach(el => { if(el) el.style.height = totalH + 'px'; });
+
+            // Superponer el hero sobre el fondo: solapar hacia abajo el alto del hero + extraBottom
+            container.style.marginBottom = -(heroH + extraBottom) + 'px';
+          }
+          window.addEventListener('load', sizeHeroBg);
+          window.addEventListener('resize', sizeHeroBg);
+        })();
+    </script>
+</body>
+</html>

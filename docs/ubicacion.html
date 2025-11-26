@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubicación - Cantera #75024</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/logo.png" type="image/png" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+          <div class="logo-container">
+            <img src="img/logo.png" alt="Cantera #75024 Logo" height="60" width="60">
+            <a href="index.html" class="logo">Cantera #75024</a>
+          </div>
+          <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu">
+            <span>&#9776;</span>
+          </button>
+          <ul id="main-menu">
+            <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+            <li><a href="actividades.html">Actividades</a></li>
+            <li><a href="galeria.html">Homenaje a Nuestros Líderes</a></li>
+            <li><a href="futbol7.html">Campeonato</a></li>
+            <li><a href="ubicacion.html" class="active">Ubicación</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <section class="content">
+        <h1>Ubicación</h1>
+        <div class="location-container">
+          <div class="map">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3795.1234567890123!2d-63.1978!3d-17.7833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93f1e98c9d090535%3A0x816050a57ddc116b!2sCap%C3%ADtulo%20Cantera%20N%2075024!5e0!3m2!1ses!2sbo!4v1680000000000"
+              width="100%" 
+              height="400" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="location-info">
+            <img src="img/demolayscz.png" alt="DeMolay Santa Cruz Logo" class="demolay-logo">
+            <div class="location-text">
+              <p>
+                El Campamento de Santa Cruz es un punto estratégico para el Capítulo Cantera #75024 dentro del movimiento DeMolay Internacional. Aquí se fomenta el liderazgo, la hermandad y los valores que caracterizan a nuestra Orden en Bolivia y Latinoamérica.
+              </p>
+              <p>
+                Estamos orgullosos de pertenecer a esta gran familia y de llevar adelante nuestras actividades en este emblemático lugar.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    <footer>
+        <p>&copy; <span id="year"></span> Cantera #75024 - DeMolay Internacional</p>
+    </footer>
+    <script>
+      document.getElementById("year") && (document.getElementById("year").textContent = new Date().getFullYear());
+      // Menú hamburguesa responsive
+      const menuToggle = document.querySelector('.menu-toggle');
+      const menu = document.getElementById('main-menu');
+      menuToggle.addEventListener('click', function() {
+        menu.classList.toggle('show');
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !expanded);
+      });
+    </script>
+</body>
+</html>

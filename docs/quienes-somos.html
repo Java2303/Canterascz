@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiénes Somos - Cantera #75024</title>
+  <link rel="icon" href="img/logo.png" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo-container">
+        <img src="img/logo.png" alt="Cantera #75024 Logo" height="60" width="60" />
+        <a href="index.html" class="logo">Cantera #75024</a>
+      </div>
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu">
+        <span>&#9776;</span>
+      </button>
+      <ul id="main-menu">
+        <li><a href="quienes-somos.html" class="active">Quiénes Somos</a></li>
+        <li><a href="actividades.html">Actividades</a></li>
+        <li><a href="galeria.html">Homenaje a Nuestros Líderes</a></li>
+        <li><a href="futbol7.html">Campeonato</a></li>
+        <li><a href="ubicacion.html">Ubicación</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content quienes-somos">
+
+    <h1>Quiénes Somos</h1>
+
+    <section class="historia">
+      <h2><i class="fa-solid fa-book-open-reader" style="color: var(--color-naranja)"></i> Nuestra Historia</h2>
+      <p>
+        El Capítulo Cantera #75024 fue fundado oficialmente el <strong>30 de noviembre de 2011</strong>, con el patrocinio de la
+        Respetable Logia Simbólica "Cantera del Oriente #74" en Santa Cruz de la Sierra, bajo la Gran Logia de Bolivia.
+      </p>
+      <p>
+        Nuestra instalación oficial se realizó el <strong>7 de abril de 2012</strong>, marcando el inicio formal de nuestras actividades
+        bajo la Orden DeMolay en Bolivia, con el compromiso de fomentar valores sólidos en nuestros miembros.
+      </p>
+      <img src="img/historia.jpg" alt="Fundación del Capítulo Cantera" class="img-section" />
+    </section>
+
+    <section class="valores">
+      <h2><i class="fa-solid fa-shield-halved" style="color: var(--color-naranja)"></i> Nuestro Escudo y Valores</h2>
+      <p>
+        Nuestro escudo representa nuestra identidad y los valores que nos guían:
+      </p>
+      <ul class="valores-list">
+        <li>Las piedras simbolizan a cada hermano, quien pule su “piedra bruta” para convertirse en un hombre de bien.</li>
+        <li>La cruz roja evoca humildad, justicia y lealtad.</li>
+        <li>La flor de lis representa la perfección y la divinidad que buscamos mantener en nuestra vida.</li>
+        <li>El estandarte refleja la hermandad y la unión con la masonería.</li>
+        <li>La esperanza está simbolizada en el color verde oscuro del nombre Cantera.</li>
+      </ul>
+      <img src="img/logo.png" alt="Escudo del Capítulo Cantera" class="img-section" />
+    </section>
+
+
+    <section class="frase-inspiradora">
+      <blockquote>
+        <p>"Moldeamos nuestra piedra bruta con esfuerzo, honor y fraternidad para construir un legado eterno."</p>
+        <cite>— Capítulo Cantera #75024</cite>
+      </blockquote>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Cantera #75024 - DeMolay Internacional</p>
+  </footer>
+
+  <script>
+    document.getElementById("year") && (document.getElementById("year").textContent = new Date().getFullYear());
+    // Menú hamburguesa responsive
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('main-menu');
+    menuToggle.addEventListener('click', function() {
+      menu.classList.toggle('show');
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !expanded);
+    });
+  </script>
+</body>
+</html>

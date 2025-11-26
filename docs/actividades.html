@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Actividades - Cantera #75024</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="img/logo.png" type="image/png" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <nav>
+          <div class="logo-container">
+            <img src="img/logo.png" alt="Cantera #75024 Logo" height="60" width="60" />
+            <a href="index.html" class="logo">Cantera #75024</a>
+          </div>
+          <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu">
+            <span>&#9776;</span>
+          </button>
+          <ul id="main-menu">
+            <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+            <li><a href="actividades.html" class="active">Actividades</a></li>
+            <li><a href="galeria.html">Homenaje a Nuestros Líderes</a></li>
+            <li><a href="futbol7.html">Campeonato</a></li>
+            <li><a href="ubicacion.html">Ubicación</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+    </header>
+
+    <section class="content">
+        <h1>Actividades</h1>
+        <p>
+            En Cantera desarrollamos actividades que fortalecen la amistad, el liderazgo y el compromiso social.  
+            Entre nuestras principales acciones se destacan:
+        </p>
+        <ul>
+            <li>Jornadas de filantropía.</li>
+            <li>Eventos deportivos y recreativos.</li>
+            <li>Capacitación en liderazgo, oratoria y desarrollo personal.</li>
+            <li>Reuniones fraternales.</li>
+        </ul>
+
+        <div class="galeria-actividades">
+          <figure>
+            <a href="img/filantropia.jpg" data-lightbox="actividades" data-title="Jornadas de filantropía">
+              <img src="img/filantropia.jpg" alt="Jornadas de filantropía" />
+            </a>
+            <figcaption>Jornadas de filantropía</figcaption>
+          </figure>
+          <figure>
+            <a href="img/deportes.jpg" data-lightbox="actividades" data-title="Eventos deportivos y recreativos">
+              <img src="img/deportes.jpg" alt="Eventos deportivos y recreativos" />
+            </a>
+            <figcaption>Eventos deportivos y recreativos</figcaption>
+          </figure>
+          <figure>
+            <a href="img/capacitacion.jpg" data-lightbox="actividades" data-title="Capacitación en liderazgo y desarrollo personal">
+              <img src="img/capacitacion.jpg" alt="Capacitación y talleres" />
+            </a>
+            <figcaption>Capacitación en liderazgo y desarrollo personal</figcaption>
+          </figure>
+          <figure>
+            <a href="img/contacto.jpg" data-lightbox="actividades" data-title="Reuniones fraternales">
+              <img src="img/contacto.jpg" alt="Reuniones fraternales" />
+            </a>
+            <figcaption>Reuniones fraternales</figcaption>
+          </figure>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="year"></span> Cantera #75024 - DeMolay Internacional</p>
+    </footer>
+
+    <!-- Lightbox2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script>
+      document.getElementById("year") && (document.getElementById("year").textContent = new Date().getFullYear());
+      // Menú hamburguesa responsive
+      const menuToggle = document.querySelector('.menu-toggle');
+      const menu = document.getElementById('main-menu');
+      menuToggle.addEventListener('click', function() {
+        menu.classList.toggle('show');
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !expanded);
+      });
+    </script>
+</body>
+</html>

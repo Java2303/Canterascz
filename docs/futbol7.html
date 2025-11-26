@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipo de Futbol - Cantera #75024</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/logo.png" type="image/png" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+<style>
+      /* Carrusel horizontal para fotos del campeonato */
+      .carousel {
+        max-width: 1000px;
+        margin: 1rem auto 0 auto;
+      }
+      .carousel-track {
+        position: relative;
+        display: grid;
+        grid-template-areas: 'stack';
+        overflow: hidden;
+      }
+      .carousel .slide {
+        grid-area: stack;
+        opacity: 0;
+        transition: opacity 400ms ease;
+      }
+      .carousel .slide.active {
+        opacity: 1;
+      }
+      .carousel figure {
+        margin: 0;
+        text-align: center;
+      }
+      .carousel img,
+      .carousel video {
+        width: 100%;
+        height: auto;
+        max-height: 70vh;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      }
+      .carousel figcaption {
+        margin-top: 0.5rem;
+        font-size: 1rem;
+        color: var(--color-negro);
+      }
+      .carousel-nav {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin: 0.5rem auto 0;
+        max-width: 280px;
+      }
+      .carousel-nav button {
+        background: var(--color-naranja);
+        color: #fff;
+        border: none;
+        border-radius: 999px;
+        width: 44px;
+        height: 44px;
+        font-size: 1.4rem;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(255, 111, 0, 0.35);
+      }
+      .carousel-nav button:hover { filter: brightness(0.95); }
+      .carousel-nav button:active { transform: scale(0.98); }
+    /* Escudo del Equipo - tarjeta destacada */
+      .escudo-section {
+        margin-top: 3rem;
+      }
+      .escudo-title {
+        text-align: center;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        margin-bottom: 1rem;
+        color: var(--color-negro);
+      }
+      .escudo-card {
+        position: relative;
+        overflow: visible;
+        border-radius: 0;
+        padding: 0.5rem 0 0.75rem;
+        text-align: center;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+      }
+      .escudo-card::before,
+      .escudo-card::after {
+        content: none;
+      }
+            .escudo-glow {
+        position: absolute;
+        inset: auto 50% -80px 50%;
+        transform: translateX(-50%);
+        width: 80%; height: 180px;
+        background: radial-gradient(closest-side, rgba(255,111,0,0.45), rgba(255,111,0,0.12), transparent);
+        filter: blur(18px);
+        pointer-events: none;
+      }
+      .escudo-img {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        border-radius: 0;
+        box-shadow: none;
+        transition: transform 300ms ease, filter 300ms ease;
+        filter:
+          drop-shadow(0 20px 35px rgba(0,0,0,0.35))
+          drop-shadow(0 0 30px rgba(255,111,0,0.22));
+      }
+      .escudo-card:hover .escudo-img {
+        transform: translateY(-4px) scale(1.02);
+        filter:
+          drop-shadow(0 24px 45px rgba(0,0,0,0.4))
+          drop-shadow(0 0 38px rgba(255,111,0,0.28));
+      }
+      .escudo-subtitle {
+        margin-top: 0.75rem;
+        color: var(--color-negro);
+        font-weight: 800;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+      }
+      /* Shine opcional */
+      @media (prefers-reduced-motion: no-preference) {
+        .escudo-card {
+          --shine: linear-gradient(120deg, transparent, rgba(255,255,255,0.12), transparent);
+        }
+        .escudo-card::after {
+          background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)), var(--shine);
+          background-size: 100% 100%, 200% 100%;
+          background-position: 0 0, -200% 0;
+          animation: escudo-shine 5.5s ease-in-out infinite;
+        }
+        @keyframes escudo-shine {
+          0%, 60% { background-position: 0 0, -200% 0; }
+          75% { background-position: 0 0, 200% 0; }
+          100% { background-position: 0 0, 200% 0; }
+        }
+      }
+      @media (max-width: 900px) {
+        .escudo-img { max-width: 92vw; }
+        .escudo-card { padding: 1.5rem 0.75rem 2rem; }
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+          <div class="logo-container">
+            <img src="img/logo.png" alt="Cantera #75024 Logo" height="60" width="60">
+            <a href="index.html" class="logo">Cantera #75024</a>
+          </div>
+          <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu">
+            <span>&#9776;</span>
+          </button>
+          <ul id="main-menu">
+            <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+            <li><a href="actividades.html">Actividades</a></li>
+            <li><a href="galeria.html">Homenaje a Nuestros Líderes</a></li>
+            <li><a href="futbol7.html" class="active">Campeonato</a></li>
+            <li><a href="ubicacion.html">Ubicación</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <section class="content campeonato">
+        <h1>Historia del Equipo de Fútbol</h1>
+        <p>
+          A lo largo de su historia, el Capítulo Cantera no solo ha destacado por su labor formativa, filosófica y fraternal, sino también por su espíritu competitivo y su pasión por el deporte. En diferentes gestiones, nuestros hermanos han demostrado que los principios DeMolay también pueden vivirse fuera de la sala capitular, a través del trabajo en equipo, la disciplina, la camaradería y el esfuerzo físico.
+        </p>
+        <p>
+          En este sentido, es motivo de orgullo dejar constancia de uno de los momentos de mayor gloria deportiva del capítulo. Durante la gestión 2016, nuestros representantes se consagraron como bicampeones del Torneo Deportivo DeMolay, obteniendo el campeonato tanto en la gestión I como en la gestión II de ese mismo año, logro que, hasta la fecha, permanece como un hito insuperado.
+        </p>
+        <p>
+          Agregando la victoria aplastante obtenida la gestion II/2025, con un equipo invicto y marcando en total 22 goles. Y asi consiguiendo el tercer campeonato de la historia del capítulo.
+        </p>
+        <div class="highlight-box">
+          <ul>
+            <li>En la final del torneo de la gestión I/2016, nuestros hermanos vencieron a un capítulo de gran trayectoria, en un partido cargado de intensidad y honor.</li>
+            <li>En la final de la gestión II/2016, se superó a otro capítulo destacado, consolidando así el bicampeonato.</li>
+            <li>En la final de la gestión II/2025, el equipo demostró un nivel de juego excepcional, ganando la final 3 a 0, siempre teniendo compañerismo, liderazgo y ambicion de los jugadores.</li>
+          </ul>
+        </div>
+      
+        <p>
+          Este triple campeonato simboliza la excelencia en el ámbito deportivo, la unión fraterna y el compromiso de cada hermano que defendió los colores y el nombre del Capítulo Cantera con honor y determinación.
+        </p>
+      
+        <p>
+          Cabe destacar que el Capítulo Cantera jamás ha perdido una final, reflejo de un alto rendimiento deportivo y una hermandad sólida que trasciende cualquier desafío.
+        </p>
+      
+        <div class="fotos-campeonato">
+          <h2>Fotos de los Campeonatos 2025</h2>
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <figure class="slide">
+                <img src="img/campeonato2025-1.jpg" alt="Celebración del Campeonato Gestión II 2025">
+                <figcaption>Celebración del Campeonato Gestión II 2025</figcaption>
+              </figure>
+              <figure class="slide">
+                <video
+                  src="img/videocampeonato.mp4"
+                  controls
+                  muted
+                  autoplay
+                  loop
+                  playsinline
+                  preload="metadata"
+                  poster="img/portada-videocampeonato.jpg"></video>
+                <figcaption>Equipo en la final Gestión II 2025</figcaption>
+              </figure>
+            </div>
+            <div class="carousel-nav">
+              <button class="carousel-prev" aria-label="Anterior">‹</button>
+              <button class="carousel-next" aria-label="Siguiente">›</button>
+            </div>
+          </div>
+        </div>
+      
+        <div class="escudo-futbol escudo-section">
+          <h2 class="escudo-title">Escudo del Equipo</h2>
+          <div class="escudo-card" role="figure" aria-label="Escudo del Equipo Cantera">
+            <div class="escudo-glow" aria-hidden="true"></div>
+            <img class="escudo-img" src="img/escudo.png" alt="Escudo de Fútbol 7 del Capítulo Cantera" />
+            <p class="escudo-subtitle">Orgullo • Hermandad • Victoria</p>
+          </div>
+        </div>
+      
+        <div class="fotos-ultimo-campeonato">
+          <h2>Fotos del Último Campeonato Jugado</h2>
+          <div class="carousel" data-carousel>
+            <div class="carousel-track">
+              <figure class="slide">
+                <img src="img/ultimo-campeonato-1.jpg" alt="Foto 1 del Último Campeonato">
+                <figcaption>Momento destacado del último campeonato</figcaption>
+              </figure>
+              <figure class="slide">
+                <img src="img/ultimo-campeonato-2.jpg" alt="Foto 2 del Último Campeonato">
+                <figcaption>Amor por el deporte y el capitulo</figcaption>
+              </figure>
+            </div>
+            <div class="carousel-nav">
+              <button class="carousel-prev" aria-label="Anterior">‹</button>
+              <button class="carousel-next" aria-label="Siguiente">›</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    <footer>
+        <p>&copy; <span id="year"></span> Cantera #75024 - DeMolay Internacional</p>
+    </footer>
+    <script>
+      document.getElementById("year") && (document.getElementById("year").textContent = new Date().getFullYear());
+      // Menú hamburguesa responsive
+      const menuToggle = document.querySelector('.menu-toggle');
+      const menu = document.getElementById('main-menu');
+      menuToggle.addEventListener('click', function() {
+        menu.classList.toggle('show');
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !expanded);
+      });
+
+      // Carruseles independientes por sección (transición por desvanecido)
+      document.querySelectorAll('[data-carousel]').forEach(carousel => {
+        const track = carousel.querySelector('.carousel-track');
+        const slides = Array.from(track.querySelectorAll('.slide'));
+        const prev = carousel.querySelector('.carousel-prev');
+        const next = carousel.querySelector('.carousel-next');
+
+        let index = 0;
+
+        function updateHeight() {
+          track.style.height = slides[index].offsetHeight + 'px';
+        }
+
+        function setActive(i) {
+          // Pausar video del slide saliente
+          const currentVideo = slides[index].querySelector('video');
+          if (currentVideo) { try { currentVideo.pause(); } catch (e) {} }
+
+          slides[index].classList.remove('active');
+          index = (i + slides.length) % slides.length;
+          slides[index].classList.add('active');
+
+          // Ajustar altura al slide activo
+          updateHeight();
+
+          // Reproducir video si existe y está silenciado/autoplay
+          const newVideo = slides[index].querySelector('video');
+          if (newVideo && (newVideo.autoplay || newVideo.muted)) {
+            try { newVideo.play(); } catch (e) {}
+          }
+        }
+
+        // Inicialización
+        slides.forEach((s, i) => s.classList.toggle('active', i === 0));
+        window.addEventListener('load', updateHeight);
+        if (typeof ResizeObserver !== 'undefined') {
+          const ro = new ResizeObserver(() => updateHeight());
+          slides.forEach(s => ro.observe(s));
+        } else {
+          window.addEventListener('resize', updateHeight);
+        }
+
+        prev.addEventListener('click', () => setActive(index - 1));
+        next.addEventListener('click', () => setActive(index + 1));
+
+        // Navegación con teclado
+        carousel.setAttribute('tabindex', '0');
+        carousel.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') prev.click();
+          if (e.key === 'ArrowRight') next.click();
+        });
+      });
+    </script>
+</body>
+</html>
