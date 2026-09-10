@@ -154,10 +154,39 @@ function setupLightbox() {
   }
 }
 
+// Función para el carrusel de DeMolay en Santa Cruz (Inicio)
+function setupSantaCruzCarousel() {
+  const carousel = document.getElementById('santacruz-carousel');
+  const prevBtn = document.getElementById('santacruz-prev-btn');
+  const nextBtn = document.getElementById('santacruz-next-btn');
+  const arrowsContainer = document.getElementById('santacruz-arrows');
+
+  if (carousel) {
+    const items = carousel.children;
+    // Si en desktop hay más de 3 fotos, mostrar las flechas en desktop también
+    if (arrowsContainer && items.length > 3) {
+      arrowsContainer.classList.remove('md:hidden');
+    }
+
+    if (prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        const itemWidth = carousel.firstElementChild ? carousel.firstElementChild.offsetWidth + 32 : carousel.offsetWidth;
+        carousel.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+      });
+
+      nextBtn.addEventListener('click', () => {
+        const itemWidth = carousel.firstElementChild ? carousel.firstElementChild.offsetWidth + 32 : carousel.offsetWidth;
+        carousel.scrollBy({ left: itemWidth, behavior: 'smooth' });
+      });
+    }
+  }
+}
+
 // Ejecutar todas las funciones cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
   setupMenu();
   updateFooterYear();
   setupCarousels();
   setupLightbox();
+  setupSantaCruzCarousel();
 });
