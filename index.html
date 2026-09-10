@@ -299,20 +299,9 @@
 <!-- Gallery Section -->
 <section class="py-24 bg-surface-container-high" id="actividades">
 <div class="max-w-7xl mx-auto px-8">
-<div class="flex justify-between items-end mb-12">
-<div>
+<div class="mb-12">
 <h2 class="font-headline text-4xl font-bold text-on-surface">DeMolay en Santa Cruz</h2>
 <p class="text-secondary mt-2">Momentos que definen nuestra historia local.</p>
-</div>
-<!-- Las flechas se muestran en móvil y se ocultan en desktop cuando hay 3 o menos fotos -->
-<div class="flex md:hidden gap-2" id="santacruz-arrows">
-<button id="santacruz-prev-btn" aria-label="Foto anterior" class="w-11 h-11 rounded-full bg-surface flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-sm active:scale-95">
-<span class="material-symbols-outlined">chevron_left</span>
-</button>
-<button id="santacruz-next-btn" aria-label="Foto siguiente" class="w-11 h-11 rounded-full bg-surface flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-sm active:scale-95">
-<span class="material-symbols-outlined">chevron_right</span>
-</button>
-</div>
 </div>
 <div id="santacruz-carousel" class="flex overflow-x-auto md:grid md:grid-cols-3 gap-8 pb-4 scroll-smooth snap-x snap-mandatory" style="scrollbar-width: none; -ms-overflow-style: none;">
 <div class="flex-shrink-0 w-full md:w-auto snap-center rounded-2xl overflow-hidden h-[380px] md:h-[400px] relative group cursor-pointer shadow-md">
@@ -334,9 +323,24 @@
 </div>
 </div>
 </div>
+<!-- Controles inferiores para móvil (ocultos en desktop donde se ven las 3 columnas) -->
+<div id="santacruz-controls" class="flex md:hidden items-center justify-between mt-8 max-w-md mx-auto px-4">
+<button id="santacruz-prev-btn" aria-label="Foto anterior" class="w-12 h-12 rounded-full bg-surface border border-stone-200 text-on-surface flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary active:scale-95 transition-all shadow-md">
+<span class="material-symbols-outlined text-2xl">chevron_left</span>
+</button>
+<div class="flex flex-col items-center gap-2">
+<div id="santacruz-dots" class="flex items-center gap-2"></div>
+<div class="text-xs font-semibold tracking-wider text-secondary font-mono">
+<span id="santacruz-counter-current" class="text-primary font-bold text-sm">1</span> / <span id="santacruz-counter-total">3</span>
+</div>
+</div>
+<button id="santacruz-next-btn" aria-label="Foto siguiente" class="w-12 h-12 rounded-full bg-surface border border-stone-200 text-on-surface flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary active:scale-95 transition-all shadow-md">
+<span class="material-symbols-outlined text-2xl">chevron_right</span>
+</button>
+</div>
 <!-- Indicador sutil para móvil -->
 <div class="flex md:hidden items-center justify-center gap-2 text-stone-500 text-xs mt-4">
-<span class="material-symbols-outlined text-base text-primary">swipe</span> Desliza o usa las flechas para ver más fotos
+<span class="material-symbols-outlined text-base text-primary">swipe</span> Desliza con el dedo o usa las flechas para explorar
 </div>
 </div>
 </section>

@@ -208,23 +208,10 @@
         </section>
         <!-- Ex Maestres Consejeros Grid -->
         <section class="py-32 px-8 max-w-7xl mx-auto">
-            <div class="mb-20 flex flex-col md:flex-row justify-between items-end gap-6">
-                <div>
-                    <h2 class="text-4xl font-headline font-bold mb-4">Past Maestres Consejeros</h2>
-                    <p class="text-stone-500 max-w-md">La columna vertebral de nuestra historia. Líderes que guiaron
-                        este capítulo con visión y coraje.</p>
-                </div>
-                <div class="h-[1px] flex-grow bg-stone-800 mx-12 hidden md:block"></div>
-                <div class="flex gap-2">
-                    <button id="scroll-left-btn"
-                        class="p-3 rounded-full bg-stone-900 border border-stone-800 hover:bg-stone-800 transition-colors">
-                        <span class="material-symbols-outlined">chevron_left</span>
-                    </button>
-                    <button id="scroll-right-btn"
-                        class="p-3 rounded-full bg-stone-900 border border-stone-800 hover:bg-stone-800 transition-colors">
-                        <span class="material-symbols-outlined">chevron_right</span>
-                    </button>
-                </div>
+            <div class="mb-12">
+                <h2 class="text-4xl font-headline font-bold mb-4">Past Maestres Consejeros</h2>
+                <p class="text-stone-500 max-w-md">La columna vertebral de nuestra historia. Líderes que guiaron
+                    este capítulo con visión y coraje.</p>
             </div>
             <div id="leaders-carousel" class="flex overflow-x-auto gap-12 pb-4 scroll-smooth snap-x snap-mandatory"
                 style="scrollbar-width: none; -ms-overflow-style: none;">
@@ -401,33 +388,35 @@
                         Ballivián</h3>
                 </div>
             </div>
+            <!-- Controles inferiores: Botones en los extremos, dots y contador al centro -->
+            <div class="flex items-center justify-between mt-10 max-w-md mx-auto px-4">
+                <button id="leaders-prev-btn" aria-label="Anterior líder"
+                    class="w-12 h-12 rounded-full bg-stone-900 border border-stone-800 text-white flex items-center justify-center hover:bg-stone-800 hover:border-orange-500/50 hover:text-orange-500 active:scale-95 transition-all shadow-lg">
+                    <span class="material-symbols-outlined text-2xl">chevron_left</span>
+                </button>
+                <div class="flex flex-col items-center gap-2">
+                    <div id="leaders-dots" class="flex items-center gap-2"></div>
+                    <div class="text-xs font-semibold tracking-wider text-stone-400 font-mono">
+                        <span id="leaders-counter-current" class="text-orange-500 font-bold text-sm">1</span> / <span id="leaders-counter-total">7</span>
+                    </div>
+                </div>
+                <button id="leaders-next-btn" aria-label="Siguiente líder"
+                    class="w-12 h-12 rounded-full bg-stone-900 border border-stone-800 text-white flex items-center justify-center hover:bg-stone-800 hover:border-orange-500/50 hover:text-orange-500 active:scale-95 transition-all shadow-lg">
+                    <span class="material-symbols-outlined text-2xl">chevron_right</span>
+                </button>
+            </div>
             <!-- Mobile Swipe Hint -->
-            <div class="flex md:hidden items-center justify-center gap-2 text-stone-500 text-xs mt-6">
-                <span class="material-symbols-outlined text-base text-primary">swipe</span> Desliza hacia los lados para ver más
+            <div class="flex items-center justify-center gap-2 text-stone-500 text-xs mt-4">
+                <span class="material-symbols-outlined text-base text-primary">swipe</span> Desliza con el dedo o usa las flechas para explorar
             </div>
         </section>
         <!-- Hermanos Honoríficos (Bento-style) -->
         <section class="py-32 bg-stone-900/30">
             <div class="max-w-7xl mx-auto px-8">
-                <div class="text-center mb-20">
-                    <div class="mb-20 flex flex-col md:flex-row justify-between items-end gap-6">
-                        <div>
-                            <h2 class="text-4xl font-headline font-bold mb-4 italic">Hermanos Honoríficos</h2>
-                            <p class="text-stone-500 max-w-md">Reconociendo a quienes han apoyado a nuestro capítulo con
-                                mucho amor y dedicación.</p>
-                        </div>
-                        <div class="h-[1px] flex-grow bg-stone-800 mx-12 hidden md:block"></div>
-                        <div class="flex gap-2">
-                            <button id="honorificos-scroll-left-btn"
-                                class="p-3 rounded-full bg-stone-900 border border-stone-800 hover:bg-stone-800 transition-colors">
-                                <span class="material-symbols-outlined">chevron_left</span>
-                            </button>
-                            <button id="honorificos-scroll-right-btn"
-                                class="p-3 rounded-full bg-stone-900 border border-stone-800 hover:bg-stone-800 transition-colors">
-                                <span class="material-symbols-outlined">chevron_right</span>
-                            </button>
-                        </div>
-                    </div>
+                <div class="mb-12">
+                    <h2 class="text-4xl font-headline font-bold mb-4 italic">Hermanos Honoríficos</h2>
+                    <p class="text-stone-500 max-w-md">Reconociendo a quienes han apoyado a nuestro capítulo con
+                        mucho amor y dedicación.</p>
                 </div>
                 <div id="honorificos-carousel"
                     class="flex overflow-x-auto gap-12 pb-4 scroll-smooth snap-x snap-mandatory"
@@ -500,14 +489,30 @@
                         <p class="text-stone-400 mt-2">Por llevar la vision del Capitulo al extranjero.</p>
                     </div>
                 </div>
+                <!-- Controles inferiores: Botones en los extremos, dots y contador al centro -->
+                <div class="flex items-center justify-between mt-10 max-w-md mx-auto px-4">
+                    <button id="honorificos-prev-btn" aria-label="Anterior hermano"
+                        class="w-12 h-12 rounded-full bg-stone-900 border border-stone-800 text-white flex items-center justify-center hover:bg-stone-800 hover:border-orange-500/50 hover:text-orange-500 active:scale-95 transition-all shadow-lg">
+                        <span class="material-symbols-outlined text-2xl">chevron_left</span>
+                    </button>
+                    <div class="flex flex-col items-center gap-2">
+                        <div id="honorificos-dots" class="flex items-center gap-2"></div>
+                        <div class="text-xs font-semibold tracking-wider text-stone-400 font-mono">
+                            <span id="honorificos-counter-current" class="text-orange-500 font-bold text-sm">1</span> / <span id="honorificos-counter-total">4</span>
+                        </div>
+                    </div>
+                    <button id="honorificos-next-btn" aria-label="Siguiente hermano"
+                        class="w-12 h-12 rounded-full bg-stone-900 border border-stone-800 text-white flex items-center justify-center hover:bg-stone-800 hover:border-orange-500/50 hover:text-orange-500 active:scale-95 transition-all shadow-lg">
+                        <span class="material-symbols-outlined text-2xl">chevron_right</span>
+                    </button>
+                </div>
                 <!-- Mobile Swipe Hint -->
-                <div class="flex md:hidden items-center justify-center gap-2 text-stone-500 text-xs mt-6">
-                    <span class="material-symbols-outlined text-base text-primary">swipe</span> Desliza hacia los lados para ver más
+                <div class="flex items-center justify-center gap-2 text-stone-500 text-xs mt-4">
+                    <span class="material-symbols-outlined text-base text-primary">swipe</span> Desliza con el dedo o usa las flechas para explorar
                 </div>
             </div>
         </section>
     </main>
-
     <!-- Footer -->
     <footer class="bg-[#111111] full-width py-12 px-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12 w-full max-w-7xl mx-auto">
@@ -583,30 +588,5 @@
         </div>
     </footer>
     <script src="script.js" defer></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const setupCarousel = (carouselId, leftBtnId, rightBtnId) => {
-                const carousel = document.getElementById(carouselId);
-                const leftBtn = document.getElementById(leftBtnId);
-                const rightBtn = document.getElementById(rightBtnId);
-
-                if (carousel && leftBtn && rightBtn) {
-                    const scrollAmount = 350 + 48; // Card width + gap
-
-                    leftBtn.addEventListener('click', () => {
-                        carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-                    });
-
-                    rightBtn.addEventListener('click', () => {
-                        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                    });
-                }
-            };
-
-            setupCarousel('leaders-carousel', 'scroll-left-btn', 'scroll-right-btn');
-            setupCarousel('honorificos-carousel', 'honorificos-scroll-left-btn', 'honorificos-scroll-right-btn');
-        });
-    </script>
 </body>
-
 </html>

@@ -1,24 +1,22 @@
 // Función para inicializar el menú hamburguesa
 function setupMenu() {
-  const menuToggle = document.querySelector('.menu-toggle'); // Selector correcto por clase
-  const menu = document.getElementById('main-menu'); // Selector correcto por ID
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('main-menu');
 
   if (menuToggle && menu) {
-    // Abrir/cerrar con el botón
     menuToggle.addEventListener('click', function() {
       menu.classList.toggle('show');
       const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
       menuToggle.setAttribute('aria-expanded', !isExpanded);
     });
 
-    // Cerrar el menú al hacer clic en un enlace (importante para móviles)
     menu.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", () => {
-            if (menu.classList.contains('show')) {
-                menu.classList.remove("show");
-                menuToggle.setAttribute('aria-expanded', 'false');
-            }
-        });
+      link.addEventListener("click", () => {
+        if (menu.classList.contains('show')) {
+          menu.classList.remove("show");
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
     });
   }
 }
@@ -29,68 +27,6 @@ function updateFooterYear() {
   if (yearSpan) {
     yearSpan.textContent = new Date().getFullYear();
   }
-}
-
-// Función para inicializar todos los carruseles de la página
-function setupCarousels() {
-  document.querySelectorAll('[data-carousel]').forEach(carousel => {
-    const track = carousel.querySelector('.carousel-track');
-    if (!track) return;
-
-    const slides = Array.from(track.children);
-    const prev = carousel.querySelector('.carousel-prev');
-    const next = carousel.querySelector('.carousel-next');
-    let index = 0;
-
-    if (slides.length === 0) return;
-
-    function updateHeight() {
-      if (slides[index]) {
-        // Pequeño delay para asegurar que el slide es visible antes de medir
-        setTimeout(() => {
-            if (slides[index]) track.style.height = slides[index].offsetHeight + 'px';
-        }, 50);
-      }
-    }
-
-    function setActive(i) {
-      const currentVideo = slides[index]?.querySelector('video');
-      if (currentVideo) {
-        try { currentVideo.pause(); } catch (e) { console.error("No se pudo pausar el video", e); }
-      }
-
-      slides[index]?.classList.remove('active');
-      index = (i + slides.length) % slides.length;
-      slides[index]?.classList.add('active');
-
-      updateHeight();
-
-      const newVideo = slides[index]?.querySelector('video');
-      if (newVideo && (newVideo.autoplay || newVideo.muted)) {
-        try { newVideo.play(); } catch (e) { console.error("No se pudo reproducir el video", e); }
-      }
-    }
-
-    slides.forEach((slide, i) => slide.classList.toggle('active', i === 0));
-    
-    window.addEventListener('load', updateHeight);
-
-    if (typeof ResizeObserver !== 'undefined') {
-      const ro = new ResizeObserver(updateHeight);
-      slides.forEach(slide => ro.observe(slide));
-    } else {
-      window.addEventListener('resize', updateHeight);
-    }
-
-    prev?.addEventListener('click', () => setActive(index - 1));
-    next?.addEventListener('click', () => setActive(index + 1));
-
-    carousel.setAttribute('tabindex', '0');
-    carousel.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') { e.preventDefault(); prev?.click(); }
-      if (e.key === 'ArrowRight') { e.preventDefault(); next?.click(); }
-    });
-  });
 }
 
 // Función para inicializar Lightbox (Modal de imágenes a pantalla completa)
@@ -154,39 +90,157 @@ function setupLightbox() {
   }
 }
 
-// Función para el carrusel de DeMolay en Santa Cruz (Inicio)
-function setupSantaCruzCarousel() {
-  const carousel = document.getElementById('santacruz-carousel');
-  const prevBtn = document.getElementById('santacruz-prev-btn');
-  const nextBtn = document.getElementById('santacruz-next-btn');
-  const arrowsContainer = document.getElementById('santacruz-arrows');
+// Función genérica para carruseles de desplazamiento horizontal con snap, dots y contador
+function initSnapCarousel({
+  carouselId,
+  prevBtnId,
+  nextBtnId,
+  dotsContainerId,
+  counterCurrentId,
+  counterTotalId,
+  activeDotClass = 'w-6 bg-orange-500',
+  inactiveDotClass = 'w-2 bg-stone-700 hover:bg-stone-500',
+}) {
+  const carousel = document.getElementById(carouselId);
+  if (!carousel) return;
 
-  if (carousel) {
-    const items = carousel.children;
-    // Si en desktop hay más de 3 fotos, mostrar las flechas en desktop también
-    if (arrowsContainer && items.length > 3) {
-      arrowsContainer.classList.remove('md:hidden');
+  const items = Array.from(carousel.children);
+  const total = items.length;
+  if (total === 0) return;
+
+  const prevBtn = document.getElementById(prevBtnId);
+  const nextBtn = document.getElementById(nextBtnId);
+  const dotsContainer = document.getElementById(dotsContainerId);
+  const counterCurrent = document.getElementById(counterCurrentId);
+  const counterTotal = document.getElementById(counterTotalId);
+
+  if (counterTotal) {
+    counterTotal.textContent = total;
+  }
+
+  let currentIndex = 0;
+
+  function updateActiveState(newIndex) {
+    if (newIndex < 0) newIndex = 0;
+    if (newIndex >= total) newIndex = total - 1;
+    currentIndex = newIndex;
+
+    if (counterCurrent) {
+      counterCurrent.textContent = currentIndex + 1;
     }
 
-    if (prevBtn && nextBtn) {
-      prevBtn.addEventListener('click', () => {
-        const itemWidth = carousel.firstElementChild ? carousel.firstElementChild.offsetWidth + 32 : carousel.offsetWidth;
-        carousel.scrollBy({ left: -itemWidth, behavior: 'smooth' });
-      });
-
-      nextBtn.addEventListener('click', () => {
-        const itemWidth = carousel.firstElementChild ? carousel.firstElementChild.offsetWidth + 32 : carousel.offsetWidth;
-        carousel.scrollBy({ left: itemWidth, behavior: 'smooth' });
+    if (dotsContainer) {
+      const dots = Array.from(dotsContainer.children);
+      dots.forEach((dot, idx) => {
+        if (idx === currentIndex) {
+          dot.className = `h-2.5 rounded-full transition-all duration-300 ${activeDotClass}`;
+        } else {
+          dot.className = `h-2.5 rounded-full transition-all duration-300 ${inactiveDotClass}`;
+        }
       });
     }
   }
+
+  function scrollToIndex(idx) {
+    if (idx < 0) idx = 0;
+    if (idx >= total) idx = total - 1;
+    const target = items[idx];
+    if (target) {
+      const targetPos = target.offsetLeft - carousel.offsetLeft;
+      carousel.scrollTo({ left: targetPos, behavior: 'smooth' });
+    }
+  }
+
+  // Generar dots dinámicamente
+  if (dotsContainer) {
+    dotsContainer.innerHTML = '';
+    items.forEach((_, idx) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Ir al elemento ${idx + 1}`);
+      dot.className = `h-2.5 rounded-full transition-all duration-300 ${idx === 0 ? activeDotClass : inactiveDotClass}`;
+      dot.addEventListener('click', () => scrollToIndex(idx));
+      dotsContainer.appendChild(dot);
+    });
+  }
+
+  // Detección en tiempo real de la tarjeta activa por scroll
+  let scrollTimeout;
+  carousel.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const carouselCenter = carousel.scrollLeft + carousel.offsetWidth / 2;
+      let closestIdx = 0;
+      let minDistance = Infinity;
+
+      items.forEach((item, idx) => {
+        const itemCenter = (item.offsetLeft - carousel.offsetLeft) + item.offsetWidth / 2;
+        const distance = Math.abs(carouselCenter - itemCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIdx = idx;
+        }
+      });
+
+      updateActiveState(closestIdx);
+    }, 30);
+  }, { passive: true });
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => scrollToIndex(currentIndex - 1));
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => scrollToIndex(currentIndex + 1));
+  }
+
+  // Inicializar estado activo
+  updateActiveState(0);
 }
 
-// Ejecutar todas las funciones cuando el DOM esté listo
+// Inicializar todos los carruseles interactivos
+function setupAllCarousels() {
+  // 1. Past Maestres Consejeros (galeria.html)
+  initSnapCarousel({
+    carouselId: 'leaders-carousel',
+    prevBtnId: 'leaders-prev-btn',
+    nextBtnId: 'leaders-next-btn',
+    dotsContainerId: 'leaders-dots',
+    counterCurrentId: 'leaders-counter-current',
+    counterTotalId: 'leaders-counter-total',
+    activeDotClass: 'w-6 bg-orange-500',
+    inactiveDotClass: 'w-2.5 bg-stone-700 hover:bg-stone-500',
+  });
+
+  // 2. Hermanos Honoríficos (galeria.html)
+  initSnapCarousel({
+    carouselId: 'honorificos-carousel',
+    prevBtnId: 'honorificos-prev-btn',
+    nextBtnId: 'honorificos-next-btn',
+    dotsContainerId: 'honorificos-dots',
+    counterCurrentId: 'honorificos-counter-current',
+    counterTotalId: 'honorificos-counter-total',
+    activeDotClass: 'w-6 bg-orange-500',
+    inactiveDotClass: 'w-2.5 bg-stone-700 hover:bg-stone-500',
+  });
+
+  // 3. DeMolay en Santa Cruz (index.html)
+  initSnapCarousel({
+    carouselId: 'santacruz-carousel',
+    prevBtnId: 'santacruz-prev-btn',
+    nextBtnId: 'santacruz-next-btn',
+    dotsContainerId: 'santacruz-dots',
+    counterCurrentId: 'santacruz-counter-current',
+    counterTotalId: 'santacruz-counter-total',
+    activeDotClass: 'w-6 bg-primary',
+    inactiveDotClass: 'w-2.5 bg-stone-300 hover:bg-stone-400',
+  });
+}
+
+// Ejecutar cuando el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', () => {
   setupMenu();
   updateFooterYear();
-  setupCarousels();
   setupLightbox();
-  setupSantaCruzCarousel();
+  setupAllCarousels();
 });
