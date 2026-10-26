@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
 
 interface Props {
@@ -15,7 +16,7 @@ const canonical = new URL(Astro.url.pathname.replace(/^\//, ''), siteUrl);
 const fullTitle = `${title} · ${site.name}`;
 ---
 <!doctype html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -36,7 +37,7 @@ const fullTitle = `${title} · ${site.name}`;
     <script is:inline>document.documentElement.classList.add('js');</script>
   </head>
   <body class="min-h-dvh overflow-x-hidden">
-    <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-brand-500 focus:px-4 focus:py-2 focus:text-white">Saltar al contenido</a>
+    <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-brand-700 focus:px-5 focus:py-2.5 focus:font-semibold focus:text-white">Saltar al contenido</a>
     <Header />
     <main id="contenido" class="min-h-[60dvh]">
       <slot />
@@ -46,12 +47,14 @@ const fullTitle = `${title} · ${site.name}`;
       import '../scripts/site.ts';
     </script>
 
-    <dialog class="lightbox m-auto max-h-[92dvh] max-w-[min(94vw,1100px)] bg-transparent p-0 text-white" aria-label="Vista ampliada" data-lightbox>
+    <dialog class="lightbox m-auto max-h-[92dvh] max-w-[min(94vw,1100px)] overflow-visible bg-transparent p-0 text-white" aria-label="Vista ampliada" data-lightbox>
       <figure class="flex flex-col items-center gap-4">
-        <img src="" alt="" class="max-h-[80dvh] w-auto max-w-full rounded-2xl object-contain shadow-2xl" data-lightbox-img />
-        <figcaption class="text-center text-sm font-medium text-white/70" data-lightbox-caption></figcaption>
+        <img src="" alt="" class="max-h-[80dvh] w-auto max-w-full rounded-3xl object-contain shadow-2xl" data-lightbox-img />
+        <figcaption class="text-center text-sm font-semibold tracking-[0.01em] text-white/80" data-lightbox-caption></figcaption>
       </figure>
-      <button type="button" class="absolute right-3 top-3 grid size-11 place-items-center rounded-full bg-white/10 text-white backdrop-blur transition hover:bg-white/20" aria-label="Cerrar" data-lightbox-close>✕</button>
+      <button type="button" class="material-light absolute right-3 top-3 grid size-11 place-items-center rounded-full text-white transition-colors duration-150" aria-label="Cerrar" data-lightbox-close data-press>
+        <Icon name="X" class="size-5" />
+      </button>
     </dialog>
   </body>
 </html>

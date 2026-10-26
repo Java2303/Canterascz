@@ -6,27 +6,31 @@ interface Props {
   class?: string;
   trackClass?: string;
   hideControlsOnDesktop?: boolean;
+  tone?: 'light' | 'dark';
 }
-const { label, class: className = '', trackClass = 'gap-6', hideControlsOnDesktop = false } = Astro.props;
+const { label, class: className = '', trackClass = 'gap-6', hideControlsOnDesktop = false, tone = 'light' } = Astro.props;
+const control = 'grid size-12 place-items-center rounded-full border border-current/20 bg-current/5 transition-colors duration-150 enabled:hover:border-brand-700 enabled:hover:bg-brand-700 enabled:hover:text-white disabled:cursor-not-allowed disabled:border-current/10 disabled:bg-transparent disabled:opacity-30';
 ---
-<section data-carousel aria-label={label} class={className}>
+<section data-carousel data-tone={tone} aria-label={label} class:list={['carousel', className]}>
   <div data-track tabindex="0" aria-label={label} class={`flex snap-x snap-mandatory overflow-x-auto pb-8 pt-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${trackClass}`}>
     <slot />
   </div>
-  <div class:list={['mx-auto mt-6 flex max-w-md items-center justify-between gap-6', hideControlsOnDesktop && 'md:hidden']}>
-    <button type="button" data-prev aria-label="Anterior" class="grid size-12 place-items-center rounded-full border border-current/20 bg-current/5 shadow-sm backdrop-blur transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] enabled:hover:border-brand-500 enabled:hover:bg-brand-500 enabled:hover:text-white enabled:active:scale-90 disabled:cursor-not-allowed disabled:opacity-35">
+  <div class:list={['mx-auto mt-4 flex max-w-md items-center justify-between gap-6 px-5', hideControlsOnDesktop && 'md:hidden']}>
+    <button type="button" data-prev aria-label="Anterior" class={control} data-press>
       <Icon name="ChevronLeft" class="size-5" />
     </button>
     <div class="flex flex-col items-center gap-3">
-      <div data-dots class="flex items-center gap-2 text-brand-500"></div>
-      <p class="font-mono text-xs tracking-widest opacity-70"><span data-current class="font-bold text-brand-500">1</span> / <span data-total></span></p>
+      <div data-dots class="flex items-center gap-2"></div>
+      <p class="font-label text-xs font-semibold tracking-[0.08em] tabular-nums"><span data-current class="carousel-accent font-bold">1</span> / <span data-total></span></p>
     </div>
-    <button type="button" data-next aria-label="Siguiente" class="grid size-12 place-items-center rounded-full border border-current/20 bg-current/5 shadow-sm backdrop-blur transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] enabled:hover:border-brand-500 enabled:hover:bg-brand-500 enabled:hover:text-white enabled:active:scale-90 disabled:cursor-not-allowed disabled:opacity-35">
+    <button type="button" data-next aria-label="Siguiente" class={control} data-press>
       <Icon name="ChevronRight" class="size-5" />
     </button>
   </div>
-  <div class:list={['mx-auto mt-5 h-1 max-w-md overflow-hidden rounded-full bg-current/10', hideControlsOnDesktop && 'md:hidden']} aria-hidden="true">
-    <div data-progress class="h-full origin-left rounded-full bg-gradient-to-r from-brand-700 to-brand-500 transition-[width] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" style="width:0%"></div>
+  <div class:list={['mt-5 px-5', hideControlsOnDesktop && 'md:hidden']} aria-hidden="true">
+    <div class="mx-auto h-1 max-w-md overflow-hidden rounded-full bg-current/10">
+      <div data-progress class="carousel-progress h-full w-full rounded-full"></div>
+    </div>
   </div>
 </section>
 <script>

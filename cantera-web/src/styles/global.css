@@ -5,53 +5,218 @@
   --color-brand-50: #fff4ec;
   --color-brand-300: #ffb691;
   --color-brand-500: #ff6f00;
-  --color-brand-600: #e65c00;
   --color-brand-700: #9e4200;
+  --color-brand-800: #7a3300;
   --color-ink-950: #0c0a09;
   --color-ink-900: #1c1917;
-  --color-ink-800: #292524;
   --color-ink-600: #57534e;
   --color-paper: #fcf9f8;
   --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --font-label: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* Profundidad: reposo (superficie apoyada), elevada (hover), flotante (sobre otra capa) */
+  --shadow-rest: 0 1px 2px rgb(12 10 9 / 0.05), 0 2px 8px -2px rgb(12 10 9 / 0.06);
+  --shadow-raised: 0 2px 4px rgb(12 10 9 / 0.05), 0 16px 32px -12px rgb(12 10 9 / 0.18);
+  --shadow-float: 0 2px 6px rgb(12 10 9 / 0.06), 0 28px 56px -20px rgb(12 10 9 / 0.32);
+}
+
+/*
+  Escala usada en todo el sitio
+  Espaciado (rem, múltiplos de 0.25rem): sección 6rem / 8rem · encabezado→contenido 3rem / 4rem ·
+  relleno de tarjeta 2rem / 2.5rem · separación de rejilla 1.5rem.
+  Radios: 1rem icono · 1.5rem tarjeta (3xl) · 2rem foto y panel (4xl) · píldora en controles.
+  Duraciones: 150ms color · 300ms sombra y borde · 700ms zoom de imagen. Lo interrumpible usa springs (scripts).
+*/
+
+/* ---------- Tipografía: tracking y leading según tamaño ---------- */
+@utility type-hero {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 1.5rem + 5.6vw, 6.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+@utility type-page {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 1.4rem + 4.6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.03;
+  letter-spacing: -0.032em;
+}
+@utility type-section {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 1.6rem + 2.8vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.07;
+  letter-spacing: -0.028em;
+}
+@utility type-stat {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 2.9rem + 2.4vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+@utility type-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.25rem + 1.1vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.018em;
+}
+@utility type-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.35rem + 0.6vw, 1.875rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+}
+@utility type-headline {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+@utility type-lede {
+  font-size: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+}
+@utility eyebrow {
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 @layer base {
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
   body {
     @apply bg-paper font-body text-ink-900 antialiased;
+    line-height: 1.6;
     text-rendering: optimizeLegibility;
   }
   h1, h2, h3, h4 { @apply font-display; text-wrap: balance; }
-  h1 { @apply tracking-[-0.035em] leading-[1.02]; }
-  h2 { @apply tracking-[-0.025em] leading-[1.08]; }
-  h3 { @apply tracking-[-0.012em]; }
   p { text-wrap: pretty; }
   ::selection { background: var(--color-brand-300); color: var(--color-ink-950); }
-  :focus-visible { outline: 2px solid var(--color-brand-500); outline-offset: 3px; border-radius: 6px; }
+  :focus-visible { outline: 2px solid var(--color-brand-500); outline-offset: 3px; }
   img { @apply select-none; }
+  button, a { -webkit-tap-highlight-color: transparent; }
+}
+
+@layer components {
+  /* ---------- Botones: misma acción, mismo aspecto ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3.5rem;
+    padding: 0 1.75rem;
+    border-radius: 999px;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+    touch-action: manipulation;
+    user-select: none;
+  }
+  .btn-sm { min-height: 2.5rem; padding: 0 1.25rem; font-family: var(--font-label); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .btn-lg { min-height: 4rem; padding: 0 2.5rem; font-size: 1.125rem; font-weight: 800; }
+  .btn-primary { background: var(--color-brand-700); color: #fff; }
+  .btn-primary:hover { background: var(--color-brand-800); }
+  .btn-light { background: #fff; color: var(--color-brand-700); box-shadow: var(--shadow-raised); }
+  .btn-light:hover { background: var(--color-brand-50); }
+  .btn-ghost { border: 1px solid rgb(255 255 255 / 0.3); color: #fff; }
+  .btn-ghost:hover { background: rgb(255 255 255 / 0.1); border-color: rgb(255 255 255 / 0.5); }
+  /* La flecha se adelanta en la dirección a la que lleva el enlace */
+  .btn-arrow, .btn-arrow-out, .btn-arrow-down { transition: translate 300ms var(--ease-out-expo), color 150ms ease; }
+  @media (hover: hover) {
+    .btn:hover .btn-arrow, .group:hover .btn-arrow { translate: 3px 0; }
+    .btn:hover .btn-arrow-out, .group:hover .btn-arrow-out { translate: 2px -2px; }
+    .group:hover .btn-arrow-down { translate: 0 3px; }
+  }
+
+  /* ---------- Superficies ---------- */
+  .card {
+    border: 1px solid var(--color-stone-200);
+    border-radius: var(--radius-3xl);
+    background: #fff;
+    box-shadow: var(--shadow-rest);
+  }
+  .card-dark {
+    border: 1px solid rgb(255 255 255 / 0.1);
+    border-radius: var(--radius-4xl);
+    background: rgb(255 255 255 / 0.04);
+  }
+  .card-link { transition: border-color 300ms ease, box-shadow 300ms ease; }
+  .card-link:hover { border-color: rgb(255 111 0 / 0.4); box-shadow: var(--shadow-raised); }
+
+  /* Materiales: pesado para estructuras (cabecera, menú), ligero para controles sobre fotos */
+  .material-heavy {
+    background: rgb(12 10 9 / 0.78);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    backdrop-filter: blur(24px) saturate(180%);
+  }
+  .material-light {
+    background: rgb(255 255 255 / 0.12);
+    border: 1px solid rgb(255 255 255 / 0.22);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    backdrop-filter: blur(12px) saturate(160%);
+  }
+  .material-light:hover { background: rgb(255 255 255 / 0.2); }
 }
 
 /* ---------- Revelado al hacer scroll (lo controla motion) ---------- */
 .js [data-reveal] { opacity: 0; }
 
-/* ---------- Cabecera de vidrio ---------- */
-.glass-header {
-  background: rgba(12, 10, 9, 0.92);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+/* ---------- Cabecera de vidrio ----------
+   El material vive en ::before para que la cabecera no sea raíz de backdrop
+   y el menú móvil pueda desenfocar el contenido que tiene debajo. */
+.glass-header { isolation: isolate; }
+.glass-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgb(12 10 9 / 0.55);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: inset 0 -1px 0 rgb(255 255 255 / 0);
+  transition: background-color 300ms ease, box-shadow 300ms ease;
 }
-.glass-header[data-scrolled="true"] {
-  background: rgba(12, 10, 9, 0.9);
-  box-shadow: 0 14px 40px -18px rgba(0, 0, 0, 0.7);
+.glass-header[data-scrolled="true"]::before {
+  background: rgb(12 10 9 / 0.78);
+  box-shadow: inset 0 -1px 0 rgb(255 255 255 / 0.08), 0 12px 32px -16px rgb(0 0 0 / 0.6);
 }
+.nav-link { color: rgb(255 255 255 / 0.8); transition: background-color 150ms ease, color 150ms ease; }
+.nav-link:hover { color: #fff; background: rgb(255 255 255 / 0.08); }
+.nav-link[aria-current="page"] { color: #fff; background: rgb(255 255 255 / 0.12); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1); }
+.nav-link[aria-current="page"]::before {
+  content: "";
+  display: inline-block;
+  width: 0.375rem;
+  height: 0.375rem;
+  margin-right: 0.5rem;
+  border-radius: 999px;
+  background: var(--color-brand-500);
+  vertical-align: 0.1em;
+}
+[data-menu-toggle][aria-expanded="true"] .menu-icon-open,
+[data-menu-toggle][aria-expanded="false"] .menu-icon-close { display: none; }
 
-/* ---------- Tarjetas con brillo que sigue al cursor ---------- */
+/* ---------- Brillo que sigue al cursor (solo en tarjetas accionables) ---------- */
 .spot { position: relative; isolation: isolate; }
 .spot::before {
   content: "";
@@ -60,34 +225,21 @@
   z-index: 2;
   border-radius: inherit;
   pointer-events: none;
-  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 111, 0, 0.20), transparent 60%);
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgb(255 111 0 / 0.14), transparent 60%);
   opacity: 0;
-  transition: opacity 0.5s var(--ease-out-expo);
+  transition: opacity 300ms ease;
 }
 .spot:hover::before { opacity: 1; }
 
-/* ---------- Reflejo de luz en botones principales ---------- */
-.sheen { position: relative; overflow: hidden; isolation: isolate; }
-.sheen::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.4) 50%, transparent 65%);
-  transform: translateX(-120%);
-  transition: transform 0.9s var(--ease-out-expo);
+/* ---------- Zoom de imagen en tarjetas (hover y foco de teclado) ---------- */
+.media-zoom { transition: scale 700ms var(--ease-out-expo), filter 700ms var(--ease-out-expo); }
+.group:focus-visible .media-zoom { scale: 1.04; filter: none; }
+@media (hover: hover) {
+  .group:hover .media-zoom { scale: 1.04; filter: none; }
 }
-.sheen:hover::after { transform: translateX(120%); }
 
-/* ---------- Carrusel: escala de profundidad ---------- */
-.depth-item { transform-origin: center center; will-change: transform; }
-
-/* ---------- Iconos animados ---------- */
-.icon-float { transition: transform 0.5s var(--ease-spring); }
-.group:hover .icon-float, .lift:hover .icon-float { transform: translateY(-3px) rotate(-6deg) scale(1.08); }
-
-/* ---------- Contenedor de icono con brillo al hover ---------- */
-.icon-tile { position: relative; isolation: isolate; }
+/* ---------- Contenedor de icono con brillo (tarjetas accionables) ---------- */
+.icon-tile { position: relative; isolation: isolate; transition: background-color 300ms ease, color 300ms ease; }
 .icon-tile::before {
   content: "";
   position: absolute;
@@ -97,47 +249,62 @@
   background: var(--color-brand-500);
   filter: blur(16px);
   opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo);
+  transition: opacity 300ms ease;
 }
-.group:hover .icon-tile::before, .group:focus-visible .icon-tile::before, .group:focus-within .icon-tile::before { opacity: 0.45; transform: scale(1); }
+.group:hover .icon-tile, .group:focus-visible .icon-tile { background: var(--color-brand-500); color: #fff; }
+.group:hover .icon-tile::before, .group:focus-visible .icon-tile::before { opacity: 0.4; }
 
-/* ---------- Indicador de scroll de la portada ---------- */
-.scroll-cue {
-  width: 1.75rem; height: 2.75rem;
-  justify-content: center; padding-top: 0.55rem;
-  border: 1.5px solid rgba(255, 255, 255, 0.55);
+/* ---------- Carrusel ---------- */
+.carousel { --accent: var(--color-brand-700); }
+.carousel[data-tone="dark"] { --accent: var(--color-brand-500); }
+.carousel-accent { color: var(--accent); }
+.carousel-dot {
+  position: relative;
+  width: 0.5rem;
+  height: 0.5rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-  transition: border-color 0.4s ease, background-color 0.4s ease;
+  background: color-mix(in srgb, currentColor 30%, transparent);
+  transition: width 300ms var(--ease-out-expo), background-color 150ms ease;
 }
-.scroll-cue:hover { border-color: var(--color-brand-300); background: rgba(255, 255, 255, 0.14); }
-.scroll-cue__dot {
-  width: 4px; height: 8px; border-radius: 999px; background: #fff;
-  animation: scroll-cue 2.2s var(--ease-out-expo) infinite;
-}
-@keyframes scroll-cue {
-  0% { transform: translateY(0); opacity: 0; }
-  25% { opacity: 1; }
-  75% { transform: translateY(14px); opacity: 0; }
-  100% { transform: translateY(14px); opacity: 0; }
-}
+.carousel-dot::before { content: ""; position: absolute; inset: -0.5rem -0.25rem; }
+.carousel-dot:hover { background: color-mix(in srgb, currentColor 60%, transparent); }
+.carousel-dot[aria-current="true"] { width: 1.75rem; background: var(--accent); }
+.carousel-progress { background: var(--accent); transform: scaleX(0); transform-origin: left; }
+.depth-item { transform-origin: center center; will-change: transform; }
 
-/* ---------- Lightbox nativo ---------- */
-dialog.lightbox::backdrop { background: rgba(12, 10, 9, 0.92); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
-dialog.lightbox[open] { animation: lb-in 0.45s var(--ease-out-expo); }
-@keyframes lb-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: none; } }
+/* ---------- Lightbox nativo (la imagen la anima motion desde su miniatura) ---------- */
+dialog.lightbox::backdrop {
+  background: rgb(12 10 9 / 0.9);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: opacity 250ms ease;
+}
+@starting-style { dialog.lightbox[open]::backdrop { opacity: 0; } }
+dialog.lightbox[data-closing]::backdrop { opacity: 0; }
 
 /* ---------- Accesibilidad ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js [data-reveal] { opacity: 1 !important; transform: none !important; }
-  .scroll-cue__dot { animation: none; opacity: 1; }
-  .icon-float, .icon-tile::before, .depth-item, .sheen::after, .spot::before { transition-duration: 0.01ms !important; }
-  .group:hover .icon-float, .lift:hover .icon-float { transform: none; }
+  .media-zoom, .btn-arrow, .btn-arrow-out, .btn-arrow-down, .carousel-dot { transition-property: filter, background-color, color; }
+  .group:hover .media-zoom, .group:focus-visible .media-zoom { scale: none; }
+  .btn:hover .btn-arrow, .group:hover .btn-arrow, .btn:hover .btn-arrow-out, .group:hover .btn-arrow-out, .group:hover .btn-arrow-down { translate: none; }
 }
 @media (prefers-reduced-transparency: reduce) {
-  .scroll-cue { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(12, 10, 9, 0.7); }
-  .glass-header, .glass-header[data-scrolled="true"] { background: #0c0a09; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .glass-header::before, .glass-header[data-scrolled="true"]::before,
+  .material-heavy { background: var(--color-ink-950); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .material-light, .material-light:hover { background: var(--color-ink-900); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  dialog.lightbox::backdrop { background: var(--color-ink-950); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@media (prefers-contrast: more) {
+  .glass-header::before, .glass-header[data-scrolled="true"]::before,
+  .material-heavy { background: var(--color-ink-950); box-shadow: inset 0 -1px 0 rgb(255 255 255 / 0.6); }
+  .material-light { background: var(--color-ink-950); border-color: #fff; }
+  .card { border-color: var(--color-ink-600); }
+  .card-dark { border-color: rgb(255 255 255 / 0.6); }
+  .btn-ghost { border-color: #fff; }
+  .nav-link { color: #fff; }
+  .nav-link[aria-current="page"] { box-shadow: inset 0 0 0 1px #fff; }
+  .carousel-dot { background: color-mix(in srgb, currentColor 60%, transparent); }
+  :focus-visible { outline-width: 3px; }
 }
