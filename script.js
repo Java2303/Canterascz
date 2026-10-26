@@ -129,6 +129,16 @@ function initSnapCarousel({
       counterCurrent.textContent = currentIndex + 1;
     }
 
+    // Botones: se atenúan y se desactivan en los extremos
+    if (prevBtn) {
+      prevBtn.disabled = currentIndex === 0;
+      prevBtn.classList.toggle('opacity-40', currentIndex === 0);
+    }
+    if (nextBtn) {
+      nextBtn.disabled = currentIndex === total - 1;
+      nextBtn.classList.toggle('opacity-40', currentIndex === total - 1);
+    }
+
     if (dotsContainer) {
       const dots = Array.from(dotsContainer.children);
       dots.forEach((dot, idx) => {
@@ -169,18 +179,23 @@ function initSnapCarousel({
   carousel.addEventListener('scroll', () => {
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(() => {
-      const carouselCenter = carousel.scrollLeft + carousel.offsetWidth / 2;
+      // Las tarjetas usan snap-start: la activa es la que está pegada al borde izquierdo
       let closestIdx = 0;
       let minDistance = Infinity;
 
       items.forEach((item, idx) => {
-        const itemCenter = (item.offsetLeft - carousel.offsetLeft) + item.offsetWidth / 2;
-        const distance = Math.abs(carouselCenter - itemCenter);
+        const itemStart = item.offsetLeft - carousel.offsetLeft;
+        const distance = Math.abs(carousel.scrollLeft - itemStart);
         if (distance < minDistance) {
           minDistance = distance;
           closestIdx = idx;
         }
       });
+
+      // En los extremos la última (o primera) tarjeta no llega al centro: usar el borde
+      const atEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 4;
+      if (atEnd) closestIdx = total - 1;
+      if (carousel.scrollLeft <= 4) closestIdx = 0;
 
       updateActiveState(closestIdx);
     }, 30);

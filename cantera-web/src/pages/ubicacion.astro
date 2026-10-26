@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { site } from '../data/site';
+---
+<Base title="Ubicación" description="Dónde nos reunimos: Campamento DeMolay Santa Cruz, sede del Capítulo Cantera #75024.">
+  <PageHero eyebrow="Ubicación" title="Visítanos y sé parte de la hermandad" text="Nuestro capítulo tiene su hogar en el corazón de la comunidad DeMolay de Santa Cruz. Aquí es donde las ideas nacen y los líderes se forman." image="img/reunion.jpg" alt="Lugar de reunión del capítulo" />
+
+  <section class="mx-auto grid max-w-7xl gap-8 px-5 py-24 md:grid-cols-5 md:px-8 md:py-32">
+    <div data-reveal class="overflow-hidden rounded-[2rem] bg-stone-200 shadow-xl md:col-span-3">
+      <iframe src={site.mapEmbed} title="Mapa del Campamento DeMolay Santa Cruz" class="aspect-[4/3] h-full min-h-[360px] w-full border-0 md:min-h-[520px]" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+    <div class="flex flex-col justify-between gap-10 md:col-span-2">
+      <div>
+        <img src="img/demolayscz.png" alt="DeMolay Santa Cruz" loading="lazy" class="mb-8 h-16 w-auto object-contain" />
+        <SectionHeader title="Campamento DeMolay Santa Cruz" />
+        <p data-reveal class="mt-6 text-lg leading-relaxed text-ink-600">El Campamento de Santa Cruz es el punto estratégico para el Capítulo Cantera #75024. Aquí se fomenta el liderazgo, la hermandad y los valores que caracterizan a nuestra Orden en Bolivia y Latinoamérica.</p>
+        <p data-reveal data-delay="80" class="mt-4 text-lg leading-relaxed text-ink-600">Estamos orgullosos de pertenecer a esta gran familia y de llevar adelante nuestras actividades en este emblemático lugar, un espacio dedicado al crecimiento y la fraternidad.</p>
+      </div>
+      <a data-reveal href={site.mapsLink} target="_blank" rel="noopener" class="sheen group inline-flex w-fit items-center gap-3 rounded-full bg-brand-700 px-7 py-4 font-display font-bold text-white transition-transform hover:-translate-y-0.5 active:scale-95">
+        <Icon name="MapPin" class="size-5" /> Abrir en Google Maps
+        <Icon name="ArrowUpRight" class="size-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+      </a>
+    </div>
+  </section>
+</Base>

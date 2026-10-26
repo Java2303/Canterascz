@@ -1,0 +1,153 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Carousel from '../components/Carousel.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { santaCruzPhotos, virtues } from '../data/site';
+
+const pillars = [
+  { icon: 'Users', title: 'Fraternidad', text: 'Más que una organización, somos una familia unida por lazos de hermandad que perduran para toda la vida.' },
+  { icon: 'Award', title: 'Liderazgo', text: 'Desarrollamos habilidades de gestión, oratoria y toma de decisiones en un entorno práctico y seguro.' },
+  { icon: 'HeartHandshake', title: 'Servicio', text: 'Impactamos positivamente en nuestra comunidad a través de proyectos de ayuda social y voluntariado.' },
+] as const;
+const facts = [
+  { value: '20+', label: 'países con presencia DeMolay' },
+  { value: '1M+', label: 'jóvenes impactados históricamente' },
+  { value: '7', label: 'virtudes cardinales que nos guían' },
+];
+---
+<Base title="Inicio" image="img/reunion.jpg">
+  <!-- Portada -->
+  <section class="relative isolate flex min-h-[92dvh] items-end overflow-hidden text-white">
+    <div class="absolute inset-0 -z-10 overflow-hidden">
+      <img src="img/reunion.jpg" alt="Jóvenes de Cantera en una reunión solemne" class="absolute inset-0 size-full scale-110 object-cover" data-parallax />
+      <div class="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/55 to-brand-700/30"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-ink-950/80 via-transparent to-transparent"></div>
+    </div>
+
+    <div class="mx-auto w-full max-w-7xl px-5 pb-28 pt-40 md:px-8 md:pb-36">
+      <p data-reveal class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 font-label text-[11px] font-bold uppercase tracking-[0.22em] backdrop-blur">
+        <span class="size-1.5 rounded-full bg-brand-500"></span> DeMolay International · Bolivia
+      </p>
+      <h1 data-reveal data-delay="80" class="max-w-4xl text-[clamp(2.9rem,8.5vw,6.5rem)] font-extrabold">
+        <span class="mb-3 block text-[0.4em] font-semibold tracking-[-0.01em] text-white/80">Bienvenidos a</span><span class="bg-gradient-to-r from-brand-300 to-brand-500 bg-clip-text text-transparent">Capítulo Cantera</span> <span class="whitespace-nowrap text-white">#75024</span>
+      </h1>
+      <p data-reveal data-delay="180" class="mt-7 max-w-xl text-lg leading-relaxed text-white/85 md:text-xl">
+        Formando líderes, forjando hermanos. Una fraternidad dedicada a construir el carácter de los jóvenes de hoy.
+      </p>
+      <div data-reveal data-delay="280" class="mt-10 flex flex-wrap gap-4">
+        <a href="quienes-somos.html" class="sheen group inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 font-display text-base font-bold text-brand-700 transition-transform duration-300 hover:-translate-y-0.5 active:scale-95">
+          Descubre nuestra historia
+          <Icon name="ArrowRight" class="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+        </a>
+        <a href="actividades.html" class="inline-flex items-center rounded-full border border-white/30 px-7 py-4 font-display text-base font-bold backdrop-blur transition-colors duration-300 hover:bg-white/10">
+          Ver actividades
+        </a>
+      </div>
+    </div>
+    <a href="#datos" aria-label="Ir al contenido" class="scroll-cue absolute bottom-[4.5rem] right-8 hidden md:flex">
+      <span class="scroll-cue__dot"></span>
+    </a>
+  </section>
+
+  <!-- Datos clave -->
+  <section id="datos" class="relative z-10 -mt-12 px-5 md:-mt-16 md:px-8">
+    <dl class="mx-auto grid max-w-7xl grid-cols-1 gap-4 md:grid-cols-3">
+      {facts.map((f, i) => (
+        <div data-reveal data-delay={i * 90} class="spot lift relative overflow-hidden rounded-3xl border border-stone-200 bg-white p-8 shadow-2xl shadow-ink-950/10 transition-all duration-500 md:p-10">
+          <div class="pointer-events-none absolute -right-10 -top-10 size-36 rounded-full bg-brand-500/10 blur-2xl"></div>
+          <dd class="relative font-display text-6xl font-extrabold tracking-tight text-brand-700 md:text-7xl">{f.value}</dd>
+          <dt class="relative mt-3 border-t border-stone-200 pt-4 font-label text-xs font-bold uppercase tracking-[0.2em] text-ink-600">{f.label}</dt>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <!-- Pilares -->
+  <section class="mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-32">
+    <SectionHeader eyebrow="Por qué Cantera" title="¿Por qué ser parte de Cantera?" text="Una escuela diseñada para el crecimiento personal y la excelencia fraternal." />
+    <div class="mt-16 grid gap-6 md:grid-cols-3">
+      {pillars.map((p, i) => (
+        <article data-reveal data-delay={i * 110} class="spot lift group rounded-3xl border border-stone-200 bg-white p-9 transition-all duration-500">
+          <div data-reveal data-delay={i * 110 + 220} class="icon-tile mb-8 grid size-14 place-items-center rounded-2xl bg-brand-50 text-brand-700 transition-colors duration-500 group-hover:bg-brand-500 group-hover:text-white">
+            <Icon name={p.icon} class="size-7" />
+          </div>
+          <h3 class="mb-3 text-2xl font-bold">{p.title}</h3>
+          <p class="leading-relaxed text-ink-600">{p.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Qué es DeMolay -->
+  <section class="bg-ink-950 py-24 text-white md:py-32">
+    <div class="mx-auto grid max-w-7xl items-center gap-16 px-5 md:grid-cols-2 md:px-8">
+      <div>
+        <SectionHeader eyebrow="La Orden" title="¿Qué es DeMolay?" />
+        <div class="mt-8 space-y-5 text-lg leading-relaxed text-white/70">
+          <p data-reveal>La Orden DeMolay es la organización fraternal de carácter iniciático para jóvenes varones entre 12 y 21 años más grande del mundo. Fundada hace más de un siglo, su misión global es formar ciudadanos ejemplares y líderes íntegros.</p>
+          <p data-reveal data-delay="80">Patrocinada por la Masonería, DeMolay enseña virtudes cívicas y morales a través de rituales simbólicos y una estructura de autogestión liderada por los propios jóvenes.</p>
+        </div>
+        <ul class="mt-10 space-y-4">
+          {['Presencia en más de 20 países', 'Más de 1 millón de jóvenes impactados históricamente'].map((t, i) => (
+            <li data-reveal data-delay={160 + i * 80} class="flex items-center gap-4 font-semibold">
+              <Icon name="CheckCircle2" class="size-6 shrink-0 text-brand-500" /> {t}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div data-reveal class="relative">
+        <div class="absolute -right-10 -top-10 size-72 rounded-full bg-brand-500/25 blur-3xl"></div>
+        <img src="img/demolay-bolivia-2.jpg" alt="Reunión de DeMolay" loading="lazy" class="relative aspect-[4/5] w-full rounded-[2rem] object-cover shadow-2xl ring-1 ring-white/10" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Virtudes -->
+  <section class="mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-32">
+    <SectionHeader eyebrow="Nuestros pilares" title="7 Virtudes Cardinales" align="center" />
+    <ul class="mt-16 grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-7">
+      {virtues.map((v, i) => (
+        <li data-reveal data-delay={i * 70} class="spot lift group flex flex-col items-center rounded-3xl border border-stone-200 bg-white p-6 text-center transition-all duration-500">
+          <span data-reveal data-delay={i * 70 + 200} class="icon-tile mb-5 grid size-16 place-items-center rounded-full bg-brand-50 text-brand-700 transition-all duration-500 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white">
+            <Icon name={v.icon} class="size-7" />
+          </span>
+          <span class="font-label text-[13px] font-bold uppercase leading-snug tracking-wide">{v.name}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- DeMolay en Santa Cruz -->
+  <section class="bg-stone-100 py-24 md:py-32">
+    <div class="mx-auto max-w-7xl px-5 md:px-8">
+      <SectionHeader eyebrow="Santa Cruz" title="DeMolay en Santa Cruz" text="Momentos que definen nuestra historia local." />
+    </div>
+    <div class="mx-auto mt-14 max-w-7xl px-5 md:px-8">
+      <Carousel label="DeMolay en Santa Cruz" trackClass="gap-5 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible" hideControlsOnDesktop>
+        {santaCruzPhotos.map((p) => (
+          <figure class="relative aspect-[4/5] w-[84vw] max-w-[440px] shrink-0 snap-start overflow-hidden rounded-[2rem] shadow-xl md:w-auto md:max-w-none" data-lightbox-src={p.src} data-lightbox-title={p.title}>
+            <img src={p.src} alt={p.alt} loading="lazy" class="size-full cursor-zoom-in object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-105" />
+            <figcaption class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-950/90 to-transparent p-7 font-display text-xl font-bold text-white">{p.title}</figcaption>
+          </figure>
+        ))}
+      </Carousel>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative isolate overflow-hidden bg-brand-700 py-28 text-white">
+    <Icon name="Shield" class="pointer-events-none absolute -right-24 top-1/2 -z-10 size-[30rem] -translate-y-1/2 text-white/10" strokeWidth={0.6} />
+    <div class="mx-auto max-w-4xl px-5 text-center md:px-8">
+      <h2 data-reveal class="text-4xl font-extrabold md:text-6xl">¿Estás listo para unirte a DeMolay?</h2>
+      <p data-reveal data-delay="100" class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/85 md:text-xl">
+        Únete a una red de jóvenes comprometidos con el liderazgo y la excelencia. El camino hacia la mejor versión de ti mismo comienza aquí.
+      </p>
+      <div data-reveal data-delay="200" class="mt-10">
+        <a href="contacto.html" class="sheen inline-flex items-center gap-2 rounded-full bg-white px-10 py-5 font-display text-lg font-extrabold text-brand-700 shadow-2xl shadow-black/30 transition-transform duration-300 hover:-translate-y-0.5 active:scale-95">
+          Solicitar Información <Icon name="ArrowRight" class="size-5" />
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

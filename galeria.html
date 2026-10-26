@@ -25,8 +25,6 @@
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Manrope:wght@300;400;500;700&display=swap"
         rel="stylesheet" />
     <!-- Material Symbols Outlined (para iconos) -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -97,9 +95,6 @@
         }
     </script>
     <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
 
         .editorial-gradient {
             background: linear-gradient(135deg, #9e4200 0%, #ff6f00 100%);
@@ -134,11 +129,13 @@
             }
         }
     </style>
+    <script>document.documentElement.classList.add('js')</script>
+    <link rel="stylesheet" href="design.css">
 </head>
 
 <body class="bg-stone-950 text-white font-body selection:bg-primary-container selection:text-white">
     <!-- TopNavBar -->
-    <header class="bg-[#111111] docked full-width top-0 sticky z-50 shadow-2xl shadow-black/20">
+    <header class="site-header docked full-width top-0 sticky z-50">
         <nav class="flex items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
             <!-- Left: Logo -->
             <div class="flex-1">
@@ -172,12 +169,12 @@
             <div class="flex-1 flex justify-end">
                 <div class="flex items-center gap-6">
                     <a href="contacto.html"
-                        class="bg-primary hover:bg-primary-container text-white px-6 py-2 rounded-full font-label font-bold text-sm uppercase tracking-widest transition-all active:scale-95 duration-200">
+                        class="sheen bg-primary hover:bg-primary-container text-white px-6 py-2 rounded-full font-label font-bold text-sm uppercase tracking-widest transition-all active:scale-95 duration-200">
                         Unirse
                     </a>
                     <button class="md:hidden text-white menu-toggle" aria-label="Abrir menú" aria-expanded="false"
                         aria-controls="main-menu">
-                        <span class="material-symbols-outlined">menu</span>
+                        <span class="icon" data-icon="menu" aria-hidden="true"></span>
                     </button>
                 </div>
             </div>
@@ -216,7 +213,7 @@
             <div id="leaders-carousel" class="flex overflow-x-auto gap-12 pb-4 scroll-smooth snap-x snap-mandatory"
                 style="scrollbar-width: none; -ms-overflow-style: none;">
                 <!-- Leader Card 1 -->
-                <div class="group gray-to-color cursor-pointer flex-shrink-0 w-[350px] snap-start">
+                <div class="group gray-to-color spot cursor-pointer flex-shrink-0 w-[350px] snap-start">
                     <div class="relative aspect-[3/4] overflow-hidden rounded-xl mb-6 bg-stone-900">
                         <img alt="Flavio Palma" data-lightbox="lideres" data-title="Flavio Palma - Gestión 2012"
                             class="w-full h-full object-cover transition-all duration-700"
@@ -231,7 +228,7 @@
                     <h3 class="text-2xl font-headline font-bold group-hover:text-orange-500 transition-colors">Flavio
                         Palma</h3>
                 </div>
-                <div class="group gray-to-color cursor-pointer flex-shrink-0 w-[350px] snap-start">
+                <div class="group gray-to-color spot cursor-pointer flex-shrink-0 w-[350px] snap-start">
                     <div class="relative aspect-[3/4] overflow-hidden rounded-xl mb-6 bg-stone-900">
                         <img alt="Leonardo Alvarez" data-lightbox="lideres" data-title="Leonardo Alvarez - Gestión II/2014"
                             class="w-full h-full object-cover transition-all duration-700"
@@ -246,7 +243,7 @@
                     <h3 class="text-2xl font-headline font-bold group-hover:text-orange-500 transition-colors">Leonardo
                         Alvarez</h3>
                 </div>
-                <div class="group gray-to-color cursor-pointer flex-shrink-0 w-[350px] snap-start">
+                <div class="group gray-to-color spot cursor-pointer flex-shrink-0 w-[350px] snap-start">
                     <div class="relative aspect-[3/4] overflow-hidden rounded-xl mb-6 bg-stone-900">
                         <img alt="Carlos Viruez" data-lightbox="lideres" data-title="Carlos Viruez - Gestión II/2015"
                             class="w-full h-full object-cover transition-all duration-700"
@@ -261,7 +258,7 @@
                     <h3 class="text-2xl font-headline font-bold group-hover:text-orange-500 transition-colors">Carlos
                         Viruez</h3>
                 </div>
-                <div class="group gray-to-color cursor-pointer flex-shrink-0 w-[350px] snap-start">
+                <div class="group gray-to-color spot cursor-pointer flex-shrink-0 w-[350px] snap-start">
                     <div class="relative aspect-[3/4] overflow-hidden rounded-xl mb-6 bg-stone-900">
                         <img alt="Ernesto Montecino" data-lightbox="lideres" data-title="Ernesto Montecino - Gestión II/2022"
                             class="w-full h-full object-cover transition-all duration-700"
@@ -277,7 +274,7 @@
                         Montecino</h3>
                 </div>
                 <!-- Leader Card 2 -->
-                <div class="group gray-to-color cursor-pointer flex-shrink-0 w-[350px] snap-start">
+                <div class="group gray-to-color spot cursor-pointer flex-shrink-0 w-[350px] snap-start">
                     <div class="relative aspect-[3/4] overflow-hidden rounded-xl mb-6 bg-stone-900">
                         <img alt="Lucas Vaca Diez" data-lightbox="lideres" data-title="Lucas Vaca Díez - Gestión I/2023"
                             class="w-full h-full object-cover transition-all duration-700"
@@ -293,7 +290,7 @@
                         Vaca Díez</h3>
                 </div>
                 <!-- Leader Card 3 -->
-                <div class="group gray-to-color cursor-pointer flex-shrink-0 w-[350px] snap-start">
+                <div class="group gray-to-color spot cursor-pointer flex-shrink-0 w-[350px] snap-start">
                     <div class="relative aspect-[3/4] overflow-hidden rounded-xl mb-6 bg-stone-900">
                         <img alt="Luis Gabriel Santander" data-lightbox="lideres" data-title="Luis Gabriel Santander - Gestión I/2024"
                             class="w-full h-full object-cover transition-all duration-700"
@@ -309,7 +306,7 @@
                         Gabriel Santander</h3>
                 </div>
                 <!-- Leader Card 4 -->
-                <div class="group gray-to-color cursor-pointer flex-shrink-0 w-[350px] snap-start">
+                <div class="group gray-to-color spot cursor-pointer flex-shrink-0 w-[350px] snap-start">
                     <div class="relative aspect-[3/4] overflow-hidden rounded-xl mb-6 bg-stone-900">
                         <img alt="Israel Escalante" data-lightbox="lideres" data-title="Israel Escalante - Gestión II/2024"
                             class="w-full h-full object-cover transition-all duration-700"
@@ -324,7 +321,7 @@
                     <h3 class="text-2xl font-headline font-bold group-hover:text-orange-500 transition-colors">Israel
                         Escalante</h3>
                 </div>
-                <div class="group gray-to-color cursor-pointer flex-shrink-0 w-[350px] snap-start">
+                <div class="group gray-to-color spot cursor-pointer flex-shrink-0 w-[350px] snap-start">
                     <div class="relative aspect-[3/4] overflow-hidden rounded-xl mb-6 bg-stone-900">
                         <img alt="Samuel Parada" data-lightbox="lideres" data-title="Samuel Parada - Gestión I/2025"
                             class="w-full h-full object-cover transition-all duration-700"
@@ -340,7 +337,7 @@
                         Parada</h3>
                 </div>
                 <!-- Leader Card 5 -->
-                <div class="group gray-to-color cursor-pointer flex-shrink-0 w-[350px] snap-start">
+                <div class="group gray-to-color spot cursor-pointer flex-shrink-0 w-[350px] snap-start">
                     <div class="relative aspect-[3/4] overflow-hidden rounded-xl mb-6 bg-stone-900">
                         <img alt="Luis Andrés Saucedo" data-lightbox="lideres" data-title="Luis Andrés Saucedo - Gestión II/2025"
                             class="w-full h-full object-cover transition-all duration-700"
@@ -356,7 +353,7 @@
                         Andrés Saucedo</h3>
                 </div>
                 <!-- Leader Card 6 -->
-                <div class="group gray-to-color cursor-pointer flex-shrink-0 w-[350px] snap-start">
+                <div class="group gray-to-color spot cursor-pointer flex-shrink-0 w-[350px] snap-start">
                     <div class="relative aspect-[3/4] overflow-hidden rounded-xl mb-6 bg-stone-900">
                         <img alt="Jose Alberto Vargas" data-lightbox="lideres" data-title="Jose Alberto Vargas - Gestión I/2026"
                             class="w-full h-full object-cover transition-all duration-700"
@@ -372,7 +369,7 @@
                         Alberto Vargas</h3>
                 </div>
                 <!-- Leader Card 7 -->
-                <div class="group gray-to-color cursor-pointer flex-shrink-0 w-[350px] snap-start">
+                <div class="group gray-to-color spot cursor-pointer flex-shrink-0 w-[350px] snap-start">
                     <div class="relative aspect-[3/4] overflow-hidden rounded-xl mb-6 bg-stone-900">
                         <img alt="Nicolás Ballivián" data-lightbox="lideres" data-title="Nicolás Ballivián - Gestión II/2026"
                             class="w-full h-full object-cover transition-all duration-700"
@@ -392,7 +389,7 @@
             <div class="flex items-center justify-between mt-10 max-w-md mx-auto px-4">
                 <button id="leaders-prev-btn" aria-label="Anterior líder"
                     class="w-12 h-12 rounded-full bg-stone-900 border border-stone-800 text-white flex items-center justify-center hover:bg-stone-800 hover:border-orange-500/50 hover:text-orange-500 active:scale-95 transition-all shadow-lg">
-                    <span class="material-symbols-outlined text-2xl">chevron_left</span>
+                    <span class="icon text-2xl" data-icon="chevron_left" aria-hidden="true"></span>
                 </button>
                 <div class="flex flex-col items-center gap-2">
                     <div id="leaders-dots" class="flex items-center gap-2"></div>
@@ -402,12 +399,12 @@
                 </div>
                 <button id="leaders-next-btn" aria-label="Siguiente líder"
                     class="w-12 h-12 rounded-full bg-stone-900 border border-stone-800 text-white flex items-center justify-center hover:bg-stone-800 hover:border-orange-500/50 hover:text-orange-500 active:scale-95 transition-all shadow-lg">
-                    <span class="material-symbols-outlined text-2xl">chevron_right</span>
+                    <span class="icon text-2xl" data-icon="chevron_right" aria-hidden="true"></span>
                 </button>
             </div>
             <!-- Mobile Swipe Hint -->
             <div class="flex items-center justify-center gap-2 text-stone-500 text-xs mt-4">
-                <span class="material-symbols-outlined text-base text-primary">swipe</span> Desliza con el dedo o usa las flechas para explorar
+                <span class="icon text-base text-primary" data-icon="swipe" aria-hidden="true"></span> Desliza con el dedo o usa las flechas para explorar
             </div>
         </section>
         <!-- Hermanos Honoríficos (Bento-style) -->
@@ -421,7 +418,7 @@
                 <div id="honorificos-carousel"
                     class="flex overflow-x-auto gap-12 pb-4 scroll-smooth snap-x snap-mandatory"
                     style="scrollbar-width: none; -ms-overflow-style: none;">
-                    <div class="group gray-to-color cursor-pointer flex-shrink-0 w-[350px] snap-start">
+                    <div class="group gray-to-color spot cursor-pointer flex-shrink-0 w-[350px] snap-start">
                         <div class="relative aspect-[3/4] overflow-hidden rounded-xl mb-6 bg-stone-900">
                             <img alt="Lord. Luis Alberto Cruz" data-lightbox="honorificos" data-title="Lord. Luis Alberto Cruz - Corte Chevalier"
                                 class="w-full h-full object-cover transition-all duration-700"
@@ -437,7 +434,7 @@
                             Luis Alberto Cruz</h3>
                         <p class="text-stone-400 mt-2">Por su mentoría y apoyo constante al Capítulo.</p>
                     </div>
-                    <div class="group gray-to-color cursor-pointer flex-shrink-0 w-[350px] snap-start">
+                    <div class="group gray-to-color spot cursor-pointer flex-shrink-0 w-[350px] snap-start">
                         <div class="relative aspect-[3/4] overflow-hidden rounded-xl mb-6 bg-stone-900">
                             <img alt="Lord Enzo Nicolás Ortiz Peralta" data-lightbox="honorificos" data-title="Lord Enzo Nicolás Ortiz Peralta - Corte Chevalier"
                                 class="w-full h-full object-cover transition-all duration-700"
@@ -455,7 +452,7 @@
                             Orden.</p>
                     </div>
                     <!-- Duplicated Card 1 -->
-                    <div class="group gray-to-color cursor-pointer flex-shrink-0 w-[350px] snap-start">
+                    <div class="group gray-to-color spot cursor-pointer flex-shrink-0 w-[350px] snap-start">
                         <div class="relative aspect-[3/4] overflow-hidden rounded-xl mb-6 bg-stone-900">
                             <img alt="Hno. Oscar Mendoza" data-lightbox="honorificos" data-title="Hno. Oscar Mendoza - Consejo Consultivo Cap. Andrey Vagoluvski"
                                 class="w-full h-full object-cover transition-all duration-700"
@@ -472,7 +469,7 @@
                         <p class="text-stone-400 mt-2">Por llevar la vision del Capitulo al extranjero.</p>
                     </div>
                     <!-- Duplicated Card 2 -->
-                    <div class="group gray-to-color cursor-pointer flex-shrink-0 w-[350px] snap-start">
+                    <div class="group gray-to-color spot cursor-pointer flex-shrink-0 w-[350px] snap-start">
                         <div class="relative aspect-[3/4] overflow-hidden rounded-xl mb-6 bg-stone-900">
                             <img alt="Hno. Bruno Gutierrez" data-lightbox="honorificos" data-title="Hno. Bruno Gutierrez - Consejo Consultivo Cap. Andrey Vagoluvski"
                                 class="w-full h-full object-cover transition-all duration-700"
@@ -493,7 +490,7 @@
                 <div class="flex items-center justify-between mt-10 max-w-md mx-auto px-4">
                     <button id="honorificos-prev-btn" aria-label="Anterior hermano"
                         class="w-12 h-12 rounded-full bg-stone-900 border border-stone-800 text-white flex items-center justify-center hover:bg-stone-800 hover:border-orange-500/50 hover:text-orange-500 active:scale-95 transition-all shadow-lg">
-                        <span class="material-symbols-outlined text-2xl">chevron_left</span>
+                        <span class="icon text-2xl" data-icon="chevron_left" aria-hidden="true"></span>
                     </button>
                     <div class="flex flex-col items-center gap-2">
                         <div id="honorificos-dots" class="flex items-center gap-2"></div>
@@ -503,12 +500,12 @@
                     </div>
                     <button id="honorificos-next-btn" aria-label="Siguiente hermano"
                         class="w-12 h-12 rounded-full bg-stone-900 border border-stone-800 text-white flex items-center justify-center hover:bg-stone-800 hover:border-orange-500/50 hover:text-orange-500 active:scale-95 transition-all shadow-lg">
-                        <span class="material-symbols-outlined text-2xl">chevron_right</span>
+                        <span class="icon text-2xl" data-icon="chevron_right" aria-hidden="true"></span>
                     </button>
                 </div>
                 <!-- Mobile Swipe Hint -->
                 <div class="flex items-center justify-center gap-2 text-stone-500 text-xs mt-4">
-                    <span class="material-symbols-outlined text-base text-primary">swipe</span> Desliza con el dedo o usa las flechas para explorar
+                    <span class="icon text-base text-primary" data-icon="swipe" aria-hidden="true"></span> Desliza con el dedo o usa las flechas para explorar
                 </div>
             </div>
         </section>
@@ -571,11 +568,11 @@
                 <h4 class="text-white font-bold font-headline uppercase tracking-widest text-sm">Contacto</h4>
                 <div class="flex flex-col gap-4">
                     <div class="flex items-start gap-3">
-                        <span class="material-symbols-outlined text-primary-container">location_on</span>
+                        <span class="icon text-primary-container" data-icon="location_on" aria-hidden="true"></span>
                         <p class="text-gray-400 text-sm">Santa Cruz de la Sierra, Bolivia</p>
                     </div>
                     <div class="flex items-start gap-3">
-                        <span class="material-symbols-outlined text-primary-container">mail</span>
+                        <span class="icon text-primary-container" data-icon="mail" aria-hidden="true"></span>
                         <p class="text-gray-400 text-sm">capitulocantera75024@gmail.com</p>
                     </div>
                 </div>
@@ -587,6 +584,8 @@
             </p>
         </div>
     </footer>
-    <script src="script.js" defer></script>
+    <script src="icons.js" defer></script>
+<script src="motion.js" defer></script>
+<script src="script.js" defer></script>
 </body>
 </html>

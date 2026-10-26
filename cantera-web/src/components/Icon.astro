@@ -1,0 +1,14 @@
+---
+// Icono Lucide por nombre (lucide-astro). Uso: <Icon name="Users" class="size-6" />
+import * as Icons from 'lucide-astro';
+
+interface Props {
+  name: keyof typeof Icons;
+  class?: string;
+  strokeWidth?: number;
+}
+
+const { name, class: className = '', strokeWidth = 1.75 } = Astro.props;
+const Cmp = Icons[name] as typeof Icons.Users;
+---
+<Cmp class:list={['icon-float', className]} stroke-width={strokeWidth} aria-hidden="true" />

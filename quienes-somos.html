@@ -22,7 +22,6 @@
     <!-- Google Fonts: Plus Jakarta Sans (Display/Headline) & Manrope (Body/Label) -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet"/>
     <!-- Material Symbols Outlined (para iconos) -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <script id="tailwind-config">
         tailwind.config = {
           darkMode: "class",
@@ -93,9 +92,6 @@
         }
     </script>
     <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
         .ambient-shadow {
             box-shadow: 0 30px 60px -12px rgba(28, 27, 27, 0.08);
         }
@@ -106,10 +102,12 @@
             }
         }
     </style>
+    <script>document.documentElement.classList.add('js')</script>
+    <link rel="stylesheet" href="design.css">
 </head>
 <body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container">
   <!-- TopNavBar -->
-<header class="bg-[#111111] docked full-width top-0 sticky z-50 shadow-2xl shadow-black/20">
+<header class="site-header docked full-width top-0 sticky z-50">
 <nav class="flex items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
     <!-- Left: Logo -->
     <div class="flex-1">
@@ -133,11 +131,11 @@
     <!-- Right: Buttons -->
     <div class="flex-1 flex justify-end">
         <div class="flex items-center gap-6">
-            <a href="contacto.html" class="bg-primary hover:bg-primary-container text-white px-6 py-2 rounded-full font-label font-bold text-sm uppercase tracking-widest transition-all active:scale-95 duration-200">
+            <a href="contacto.html" class="sheen bg-primary hover:bg-primary-container text-white px-6 py-2 rounded-full font-label font-bold text-sm uppercase tracking-widest transition-all active:scale-95 duration-200">
                     Unirse
                 </a>
             <button class="md:hidden text-white menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu">
-                <span class="material-symbols-outlined">menu</span>
+                <span class="icon" data-icon="menu" aria-hidden="true"></span>
             </button>
         </div>
     </div>
@@ -211,12 +209,12 @@
 <!-- Side Details -->
 <div class="md:col-span-5 grid grid-rows-2 gap-8">
 <div class="bg-neutral-900 text-white p-8 rounded-xl flex flex-col justify-center">
-<span class="material-symbols-outlined text-primary-container mb-4 !text-4xl">diamond</span>
+<span class="icon text-primary-container mb-4 !text-4xl" data-icon="diamond" aria-hidden="true"></span>
 <h4 class="text-xl font-bold mb-2">La Piedra Bruta</h4>
 <p class="text-white/70">Representa al joven antes de ingresar, listo para ser tallado por la educación y la fraternidad.</p>
 </div>
 <div class="bg-primary text-white p-8 rounded-xl flex flex-col justify-center">
-<span class="material-symbols-outlined text-white mb-4 !text-4xl">group</span>
+<span class="icon text-white mb-4 !text-4xl" data-icon="group" aria-hidden="true"></span>
 <h4 class="text-xl font-bold mb-2">Pureza</h4>
 <p class="text-white/90">Las flores de Lis significan la pureza y la honestidad con la que trabajamos.</p>
 </div>
@@ -312,11 +310,11 @@
 <h4 class="text-white font-bold font-headline uppercase tracking-widest text-sm">Contacto</h4>
 <div class="flex flex-col gap-4">
 <div class="flex items-start gap-3">
-<span class="material-symbols-outlined text-primary-container">location_on</span>
+<span class="icon text-primary-container" data-icon="location_on" aria-hidden="true"></span>
 <p class="text-gray-400 text-sm">Santa Cruz de la Sierra, Bolivia</p>
 </div>
 <div class="flex items-start gap-3">
-<span class="material-symbols-outlined text-primary-container">mail</span>
+<span class="icon text-primary-container" data-icon="mail" aria-hidden="true"></span>
 <p class="text-gray-400 text-sm">capitulocantera75024@gmail.com</p>
 </div>
 </div>
@@ -329,6 +327,8 @@
 </div>
 </footer>
 
-  <script src="script.js" defer></script>
+  <script src="icons.js" defer></script>
+<script src="motion.js" defer></script>
+<script src="script.js" defer></script>
 </body>
 </html>

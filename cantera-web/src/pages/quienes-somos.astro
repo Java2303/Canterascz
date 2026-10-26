@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const values = [
+  { icon: 'Target', title: 'Misión', text: 'Proporcionar un entorno de excelencia para que jóvenes de entre 12 y 21 años desarrollen habilidades de liderazgo, oratoria y gestión, fundamentados en las siete virtudes cardinales de un DeMolay.' },
+  { icon: 'Eye', title: 'Visión', text: 'Ser el capítulo líder en Bolivia, reconocido por la calidad humana y profesional de sus miembros, impactando positivamente en nuestra sociedad a través del servicio y la innovación.' },
+] as const;
+const symbols = [
+  { icon: 'Gem', title: 'La Piedra Bruta', text: 'Representa al joven antes de ingresar, listo para ser tallado por la educación y la fraternidad.' },
+  { icon: 'Flower2', title: 'Pureza', text: 'Las flores de Lis significan la pureza y la honestidad con la que trabajamos.' },
+] as const;
+---
+<Base title="Quiénes Somos" description="Custodios de un legado de excelencia en Santa Cruz, Bolivia. Historia, misión, visión y símbolos del Capítulo Cantera #75024.">
+  <PageHero eyebrow="Quiénes Somos" title="Custodios de un legado de excelencia" text="Forjamos los líderes del mañana a través de la fraternidad, el honor y el carácter." image="img/collage.jpg" alt="Salón ceremonial con iluminación cálida" />
+
+  <!-- Historia -->
+  <section class="mx-auto grid max-w-7xl gap-16 px-5 py-24 md:grid-cols-2 md:px-8 md:py-32">
+    <div>
+      <SectionHeader eyebrow="Nuestra historia" title="Un espacio donde la juventud se pule" />
+    </div>
+    <div class="space-y-6 text-lg leading-relaxed text-ink-600">
+      <p data-reveal>Fundado en el corazón de Santa Cruz de la Sierra, el Capítulo Cantera #75024 nace con la visión de crear un espacio donde la juventud boliviana pueda potenciar sus virtudes y habilidades de liderazgo bajo los principios de la Orden DeMolay.</p>
+      <p data-reveal data-delay="80">A lo largo de los años, nos hemos consolidado como una institución de referencia, donde el compromiso social y el crecimiento personal caminan de la mano. Nuestra historia es el testimonio de cientos de jóvenes que han encontrado en nuestra hermandad la "cantera" donde se pule el carácter y se forja el destino.</p>
+      <blockquote data-reveal data-delay="160" class="border-l-4 border-brand-500 pl-6 font-display text-2xl font-bold leading-snug text-ink-900">
+        “No solo somos un grupo, somos un legado en constante movimiento.”
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Misión y visión -->
+  <section class="bg-ink-950 py-24 text-white md:py-32">
+    <div class="mx-auto grid max-w-7xl gap-6 px-5 md:grid-cols-2 md:px-8">
+      {values.map((v, i) => (
+        <article data-reveal data-delay={i * 120} class="spot rounded-[2rem] border border-white/10 bg-white/[0.03] p-10 md:p-12">
+          <Icon name={v.icon} class="mb-8 size-10 text-brand-500" />
+          <h3 class="mb-4 text-3xl font-bold">{v.title}</h3>
+          <p class="text-lg leading-relaxed text-white/70">{v.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Símbolos -->
+  <section class="mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-32">
+    <SectionHeader eyebrow="Identidad y símbolos" title="El Escudo Cantera" text="Nuestro escudo no es solo una insignia; es un mapa de nuestros valores. Cada ángulo representa la firmeza de la piedra, y el color dorado simboliza la excelencia inagotable de nuestra membresía y el sol de nuestra tierra cruceña." />
+    <div class="mt-16 grid items-center gap-12 md:grid-cols-2">
+      <div data-reveal class="spot relative grid place-items-center overflow-hidden rounded-[2rem] bg-stone-900 p-14">
+        <div class="absolute size-72 rounded-full bg-brand-500/20 blur-3xl"></div>
+        <img src="img/logo.png" alt="Escudo Cantera" loading="lazy" class="relative size-64 object-contain drop-shadow-2xl transition-transform duration-700 hover:scale-105" />
+      </div>
+      <ul class="space-y-6">
+        {symbols.map((s, i) => (
+          <li data-reveal data-delay={i * 120} class="lift group flex gap-5 rounded-3xl border border-stone-200 bg-white p-7">
+            <span class="icon-tile grid size-12 shrink-0 place-items-center rounded-2xl bg-brand-50 transition-colors duration-500 group-hover:bg-brand-500 group-hover:text-white text-brand-700"><Icon name={s.icon} class="size-6" /></span>
+            <div>
+              <h3 class="mb-2 text-xl font-bold">{s.title}</h3>
+              <p class="leading-relaxed text-ink-600">{s.text}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="px-5 pb-24 md:px-8">
+    <div class="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-brand-700 px-8 py-16 text-center text-white md:py-24">
+      <h2 data-reveal class="text-4xl font-extrabold md:text-5xl">¿Listo para escribir tu propia historia?</h2>
+      <p data-reveal data-delay="80" class="mx-auto mt-5 max-w-xl text-lg text-white/85">Únete a la hermandad más grande del mundo y empieza a forjar tu camino como líder hoy mismo.</p>
+      <div data-reveal data-delay="160" class="mt-10 flex flex-wrap justify-center gap-4">
+        <a href="contacto.html" class="sheen rounded-full bg-white px-8 py-4 font-display font-bold text-brand-700 transition-transform hover:-translate-y-0.5 active:scale-95">Únete Ahora</a>
+        <a href="contacto.html" class="rounded-full border border-white/35 px-8 py-4 font-display font-bold transition-colors hover:bg-white/10">Contactar</a>
+      </div>
+    </div>
+  </section>
+</Base>
