@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import Carousel from '../components/Carousel.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { leaders, honorary } from '../data/site';
+---
+<Base title="Líderes" description="Homenaje a los Past Maestres Consejeros y Hermanos Honoríficos del Capítulo Cantera #75024.">
+  <PageHero eyebrow="Galería de líderes" title="Homenaje a nuestros líderes" text="Celebrando el legado de quienes forjaron el camino. Honor, virtud y liderazgo que trascienden las épocas." image="img/lideres.jpeg" alt="Líderes del Capítulo Cantera" />
+
+  <!-- Past Maestres Consejeros -->
+  <section class="py-24 md:py-32">
+    <div class="mx-auto max-w-7xl px-5 md:px-8">
+      <SectionHeader eyebrow="Trayectoria" title="Past Maestres Consejeros" text="La columna vertebral de nuestra historia. Líderes que guiaron este capítulo con visión y coraje." />
+    </div>
+    <div class="mt-14">
+      <Carousel label="Past Maestres Consejeros" trackClass="gap-8 px-5 md:px-8">
+        {leaders.map((l) => (
+          <article class="spot group w-[78vw] max-w-[360px] cursor-zoom-in md:w-[340px]" data-lightbox-src={l.img} data-lightbox-title={`${l.name} - ${l.period}`}>
+            <div class="relative aspect-[3/4] overflow-hidden rounded-[1.75rem] bg-stone-900 shadow-2xl ring-1 ring-white/10">
+              <img src={l.img} alt={l.name} loading="lazy" class="size-full object-cover grayscale transition-all duration-[900ms] ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105 group-hover:grayscale-0" />
+              <div class="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-transparent"></div>
+              <span class="absolute bottom-6 left-6 font-label text-[11px] font-bold uppercase tracking-[0.18em] text-brand-300">{l.period}</span>
+            </div>
+            <h3 class="mt-6 text-2xl font-bold transition-colors duration-300 group-hover:text-brand-700">{l.name}</h3>
+          </article>
+        ))}
+      </Carousel>
+    </div>
+  </section>
+
+  <!-- Hermanos Honoríficos -->
+  <section class="bg-ink-950 py-24 text-white md:py-32">
+    <div class="mx-auto max-w-7xl px-5 md:px-8">
+      <SectionHeader eyebrow="Reconocimiento" title="Hermanos Honoríficos" text="Reconociendo a quienes han apoyado a nuestro capítulo con mucho amor y dedicación." />
+    </div>
+    <div class="mt-14">
+      <Carousel label="Hermanos Honoríficos" trackClass="gap-8 px-5 md:px-8">
+        {honorary.map((h) => (
+          <article class="spot group w-[80vw] max-w-[400px] md:w-[380px]" data-lightbox-src={h.img} data-lightbox-title={h.name}>
+            <div class="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-stone-900 ring-1 ring-white/10">
+              <img src={h.img} alt={h.name} loading="lazy" class="size-full object-cover grayscale transition-all duration-[900ms] ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105 group-hover:grayscale-0" />
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-950 to-transparent p-6 pt-20">
+                <p class="font-label text-[11px] font-bold uppercase leading-relaxed tracking-[0.16em] text-brand-300">{h.role}</p>
+              </div>
+            </div>
+            <h3 class="mt-6 text-2xl font-bold transition-colors duration-300 group-hover:text-brand-300">{h.name}</h3>
+            <p class="mt-2 leading-relaxed text-white/60">{h.text}</p>
+          </article>
+        ))}
+      </Carousel>
+    </div>
+  </section>
+</Base>

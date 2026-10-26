@@ -22,7 +22,6 @@
     <!-- Google Fonts: Plus Jakarta Sans (Display/Headline) & Manrope (Body/Label) -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet"/>
     <!-- Material Symbols Outlined (para iconos) -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <script id="tailwind-config">
         tailwind.config = {
           darkMode: "class",
@@ -93,9 +92,6 @@
         }
     </script>
     <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
         .hero-gradient {
             background: linear-gradient(135deg, rgba(158, 66, 0, 0.9) 0%, rgba(255, 111, 0, 0.7) 100%);
         }
@@ -113,10 +109,12 @@
             }
         }
     </style>
+    <script>document.documentElement.classList.add('js')</script>
+    <link rel="stylesheet" href="design.css">
 </head>
 <body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container">
 <!-- TopNavBar -->
-<header class="bg-[#111111] docked full-width top-0 sticky z-50 shadow-2xl shadow-black/20">
+<header class="site-header docked full-width top-0 sticky z-50">
 <nav class="flex items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
     <!-- Left: Logo -->
     <div class="flex-1">
@@ -140,11 +138,11 @@
     <!-- Right: Buttons -->
     <div class="flex-1 flex justify-end">
         <div class="flex items-center gap-6">
-            <a href="contacto.html" class="bg-primary hover:bg-primary-container text-white px-6 py-2 rounded-full font-label font-bold text-sm uppercase tracking-widest transition-all active:scale-95 duration-200">
+            <a href="contacto.html" class="sheen bg-primary hover:bg-primary-container text-white px-6 py-2 rounded-full font-label font-bold text-sm uppercase tracking-widest transition-all active:scale-95 duration-200">
                     Unirse
                 </a>
             <button class="md:hidden text-white menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu">
-                <span class="material-symbols-outlined">menu</span>
+                <span class="icon" data-icon="menu" aria-hidden="true"></span>
             </button>
         </div>
     </div>
@@ -169,7 +167,7 @@
                         Formando líderes, forjando hermanos. Una fraternidad dedicada a construir el carácter de los jóvenes de hoy.
                     </p>
 <div class="flex flex-wrap gap-4">
-<a href="quienes-somos.html" class="bg-white text-primary hover:bg-surface-container-lowest px-10 py-4 rounded-full font-headline font-bold text-lg transition-all ambient-shadow active:scale-95">
+<a href="quienes-somos.html" class="sheen bg-white text-primary hover:bg-surface-container-lowest px-10 py-4 rounded-full font-headline font-bold text-lg transition-all ambient-shadow active:scale-95">
                             Descubre nuestra historia
                         </a>
 <a href="#quienes-somos" class="border border-white/30 text-white hover:bg-white/10 px-10 py-4 rounded-full font-headline font-bold text-lg transition-all backdrop-blur-sm">
@@ -188,25 +186,25 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <!-- Fraternidad -->
-<div class="bg-surface-container-low p-10 rounded-xl hover:bg-surface-container-lowest transition-all duration-300 group">
+<div class="bg-surface-container-low p-10 rounded-xl hover:bg-surface-container-lowest lift group">
 <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="icon text-primary text-3xl" data-icon="groups" aria-hidden="true"></span>
 </div>
 <h3 class="font-headline text-2xl font-bold mb-4 text-on-surface">Fraternidad</h3>
 <p class="text-on-surface-variant leading-relaxed">Más que una organización, somos una familia unida por lazos de hermandad que perduran para toda la vida.</p>
 </div>
 <!-- Liderazgo -->
-<div class="bg-surface-container-low p-10 rounded-xl hover:bg-surface-container-lowest transition-all duration-300 group">
+<div class="bg-surface-container-low p-10 rounded-xl hover:bg-surface-container-lowest lift group">
 <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<span class="icon text-primary text-3xl" data-icon="military_tech" aria-hidden="true"></span>
 </div>
 <h3 class="font-headline text-2xl font-bold mb-4 text-on-surface">Liderazgo</h3>
 <p class="text-on-surface-variant leading-relaxed">Desarrollamos habilidades de gestión, oratoria y toma de decisiones en un entorno práctico y seguro.</p>
 </div>
 <!-- Servicio -->
-<div class="bg-surface-container-low p-10 rounded-xl hover:bg-surface-container-lowest transition-all duration-300 group">
+<div class="bg-surface-container-low p-10 rounded-xl hover:bg-surface-container-lowest lift group">
 <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">volunteer_activism</span>
+<span class="icon text-primary text-3xl" data-icon="volunteer_activism" aria-hidden="true"></span>
 </div>
 <h3 class="font-headline text-2xl font-bold mb-4 text-on-surface">Servicio</h3>
 <p class="text-on-surface-variant leading-relaxed">Impactamos positivamente en nuestra comunidad a través de proyectos de ayuda social y voluntariado.</p>
@@ -227,11 +225,11 @@
                     </p>
 <ul class="space-y-4">
 <li class="flex items-center gap-4 text-on-surface font-semibold">
-<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="icon text-primary" data-icon="check_circle" aria-hidden="true"></span>
                             Presencia en más de 20 países
                         </li>
 <li class="flex items-center gap-4 text-on-surface font-semibold">
-<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="icon text-primary" data-icon="check_circle" aria-hidden="true"></span>
                             Más de 1 millón de jóvenes impactados históricamente
                         </li>
 </ul>
@@ -251,45 +249,45 @@
 </div>
 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6">
 <!-- Virtues Cards -->
-<div class="text-center p-6 rounded-xl hover:bg-surface-container-low transition-colors group">
+<div class="text-center p-6 rounded-xl hover:bg-surface-container-low lift group">
 <div class="w-16 h-16 mx-auto bg-primary/5 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">family_restroom</span>
+<span class="icon text-3xl text-primary group-hover:text-white transition-colors" data-icon="family_restroom" aria-hidden="true"></span>
 </div>
 <h4 class="font-headline text-sm font-bold uppercase tracking-tight">Amor Filial</h4>
 </div>
-<div class="text-center p-6 rounded-xl hover:bg-surface-container-low transition-colors group">
+<div class="text-center p-6 rounded-xl hover:bg-surface-container-low lift group">
 <div class="w-16 h-16 mx-auto bg-primary/5 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">church</span>
+<span class="icon text-3xl text-primary group-hover:text-white transition-colors" data-icon="church" aria-hidden="true"></span>
 </div>
 <h4 class="font-headline text-sm font-bold uppercase tracking-tight">Reverencia por las cosas sagradas</h4>
 </div>
-<div class="text-center p-6 rounded-xl hover:bg-surface-container-low transition-colors group">
+<div class="text-center p-6 rounded-xl hover:bg-surface-container-low lift group">
 <div class="w-16 h-16 mx-auto bg-primary/5 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">handshake</span>
+<span class="icon text-3xl text-primary group-hover:text-white transition-colors" data-icon="handshake" aria-hidden="true"></span>
 </div>
 <h4 class="font-headline text-sm font-bold uppercase tracking-tight">Cortesía</h4>
 </div>
-<div class="text-center p-6 rounded-xl hover:bg-surface-container-low transition-colors group">
+<div class="text-center p-6 rounded-xl hover:bg-surface-container-low lift group">
 <div class="w-16 h-16 mx-auto bg-primary/5 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">group</span>
+<span class="icon text-3xl text-primary group-hover:text-white transition-colors" data-icon="group" aria-hidden="true"></span>
 </div>
 <h4 class="font-headline text-sm font-bold uppercase tracking-tight">Compañerismo</h4>
 </div>
-<div class="text-center p-6 rounded-xl hover:bg-surface-container-low transition-colors group">
+<div class="text-center p-6 rounded-xl hover:bg-surface-container-low lift group">
 <div class="w-16 h-16 mx-auto bg-primary/5 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">verified_user</span>
+<span class="icon text-3xl text-primary group-hover:text-white transition-colors" data-icon="verified_user" aria-hidden="true"></span>
 </div>
 <h4 class="font-headline text-sm font-bold uppercase tracking-tight">Fidelidad</h4>
 </div>
-<div class="text-center p-6 rounded-xl hover:bg-surface-container-low transition-colors group">
+<div class="text-center p-6 rounded-xl hover:bg-surface-container-low lift group">
 <div class="w-16 h-16 mx-auto bg-primary/5 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">clean_hands</span>
+<span class="icon text-3xl text-primary group-hover:text-white transition-colors" data-icon="clean_hands" aria-hidden="true"></span>
 </div>
 <h4 class="font-headline text-sm font-bold uppercase tracking-tight">Pureza</h4>
 </div>
-<div class="text-center p-6 rounded-xl hover:bg-surface-container-low transition-colors group">
+<div class="text-center p-6 rounded-xl hover:bg-surface-container-low lift group">
 <div class="w-16 h-16 mx-auto bg-primary/5 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">flag</span>
+<span class="icon text-3xl text-primary group-hover:text-white transition-colors" data-icon="flag" aria-hidden="true"></span>
 </div>
 <h4 class="font-headline text-sm font-bold uppercase tracking-tight">Patriotismo</h4>
 </div>
@@ -326,7 +324,7 @@
 <!-- Controles inferiores para móvil (ocultos en desktop donde se ven las 3 columnas) -->
 <div id="santacruz-controls" class="flex md:hidden items-center justify-between mt-8 max-w-md mx-auto px-4">
 <button id="santacruz-prev-btn" aria-label="Foto anterior" class="w-12 h-12 rounded-full bg-surface border border-stone-200 text-on-surface flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary active:scale-95 transition-all shadow-md">
-<span class="material-symbols-outlined text-2xl">chevron_left</span>
+<span class="icon text-2xl" data-icon="chevron_left" aria-hidden="true"></span>
 </button>
 <div class="flex flex-col items-center gap-2">
 <div id="santacruz-dots" class="flex items-center gap-2"></div>
@@ -335,24 +333,24 @@
 </div>
 </div>
 <button id="santacruz-next-btn" aria-label="Foto siguiente" class="w-12 h-12 rounded-full bg-surface border border-stone-200 text-on-surface flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary active:scale-95 transition-all shadow-md">
-<span class="material-symbols-outlined text-2xl">chevron_right</span>
+<span class="icon text-2xl" data-icon="chevron_right" aria-hidden="true"></span>
 </button>
 </div>
 <!-- Indicador sutil para móvil -->
 <div class="flex md:hidden items-center justify-center gap-2 text-stone-500 text-xs mt-4">
-<span class="material-symbols-outlined text-base text-primary">swipe</span> Desliza con el dedo o usa las flechas para explorar
+<span class="icon text-base text-primary" data-icon="swipe" aria-hidden="true"></span> Desliza con el dedo o usa las flechas para explorar
 </div>
 </div>
 </section>
 <!-- CTA Section -->
 <section class="py-20 bg-primary overflow-hidden relative">
 <div class="absolute top-0 right-0 w-1/3 h-full opacity-10">
-<span class="material-symbols-outlined text-[30rem] leading-none select-none" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="icon text-[30rem] leading-none select-none icon-deco" data-icon="shield" aria-hidden="true"></span>
 </div>
 <div class="max-w-7xl mx-auto px-8 relative z-10 text-center">
 <h2 class="font-headline text-4xl md:text-5xl font-extrabold text-white mb-6">¿Estás listo para unirte a DeMolay?</h2>
 <p class="text-xl text-white/90 mb-10 max-w-2xl mx-auto">Únete a una red de jóvenes comprometidos con el liderazgo y la excelencia. El camino hacia la mejor versión de ti mismo comienza aquí.</p>
-<a href="contacto.html" class="bg-white text-primary px-12 py-4 rounded-full font-headline font-extrabold text-xl hover:bg-surface-container-lowest transition-all active:scale-95 shadow-xl">
+<a href="contacto.html" class="sheen bg-white text-primary px-12 py-4 rounded-full font-headline font-extrabold text-xl hover:bg-surface-container-lowest transition-all active:scale-95 shadow-xl">
                     Solicitar Información
                 </a>
 </div>
@@ -398,11 +396,11 @@
 <h4 class="text-white font-bold font-headline uppercase tracking-widest text-sm">Contacto</h4>
 <div class="flex flex-col gap-4">
 <div class="flex items-start gap-3">
-<span class="material-symbols-outlined text-primary-container">location_on</span>
+<span class="icon text-primary-container" data-icon="location_on" aria-hidden="true"></span>
 <p class="text-gray-400 text-sm">Santa Cruz de la Sierra, Bolivia</p>
 </div>
 <div class="flex items-start gap-3">
-<span class="material-symbols-outlined text-primary-container">mail</span>
+<span class="icon text-primary-container" data-icon="mail" aria-hidden="true"></span>
 <p class="text-gray-400 text-sm">capitulocantera75024@gmail.com</p>
 </div>
 </div>
@@ -414,6 +412,8 @@
             </p>
 </div>
 </footer>
+<script src="icons.js" defer></script>
+<script src="motion.js" defer></script>
 <script src="script.js" defer></script>
 </body>
 </html>

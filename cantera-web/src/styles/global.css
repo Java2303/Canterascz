@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+/* Tokens de marca: mismos colores del sitio original */
+@theme {
+  --color-brand-50: #fff4ec;
+  --color-brand-300: #ffb691;
+  --color-brand-500: #ff6f00;
+  --color-brand-600: #e65c00;
+  --color-brand-700: #9e4200;
+  --color-ink-950: #0c0a09;
+  --color-ink-900: #1c1917;
+  --color-ink-800: #292524;
+  --color-ink-600: #57534e;
+  --color-paper: #fcf9f8;
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-label: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-paper font-body text-ink-900 antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 { @apply font-display; text-wrap: balance; }
+  h1 { @apply tracking-[-0.035em] leading-[1.02]; }
+  h2 { @apply tracking-[-0.025em] leading-[1.08]; }
+  h3 { @apply tracking-[-0.012em]; }
+  p { text-wrap: pretty; }
+  ::selection { background: var(--color-brand-300); color: var(--color-ink-950); }
+  :focus-visible { outline: 2px solid var(--color-brand-500); outline-offset: 3px; border-radius: 6px; }
+  img { @apply select-none; }
+}
+
+/* ---------- Revelado al hacer scroll (lo controla motion) ---------- */
+.js [data-reveal] { opacity: 0; }
+
+/* ---------- Cabecera de vidrio ---------- */
+.glass-header {
+  background: rgba(12, 10, 9, 0.92);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+.glass-header[data-scrolled="true"] {
+  background: rgba(12, 10, 9, 0.9);
+  box-shadow: 0 14px 40px -18px rgba(0, 0, 0, 0.7);
+}
+
+/* ---------- Tarjetas con brillo que sigue al cursor ---------- */
+.spot { position: relative; isolation: isolate; }
+.spot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 111, 0, 0.20), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-out-expo);
+}
+.spot:hover::before { opacity: 1; }
+
+/* ---------- Reflejo de luz en botones principales ---------- */
+.sheen { position: relative; overflow: hidden; isolation: isolate; }
+.sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.4) 50%, transparent 65%);
+  transform: translateX(-120%);
+  transition: transform 0.9s var(--ease-out-expo);
+}
+.sheen:hover::after { transform: translateX(120%); }
+
+/* ---------- Carrusel: escala de profundidad ---------- */
+.depth-item { transform-origin: center center; will-change: transform; }
+
+/* ---------- Iconos animados ---------- */
+.icon-float { transition: transform 0.5s var(--ease-spring); }
+.group:hover .icon-float, .lift:hover .icon-float { transform: translateY(-3px) rotate(-6deg) scale(1.08); }
+
+/* ---------- Contenedor de icono con brillo al hover ---------- */
+.icon-tile { position: relative; isolation: isolate; }
+.icon-tile::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--color-brand-500);
+  filter: blur(16px);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo);
+}
+.group:hover .icon-tile::before, .group:focus-visible .icon-tile::before, .group:focus-within .icon-tile::before { opacity: 0.45; transform: scale(1); }
+
+/* ---------- Indicador de scroll de la portada ---------- */
+.scroll-cue {
+  width: 1.75rem; height: 2.75rem;
+  justify-content: center; padding-top: 0.55rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  transition: border-color 0.4s ease, background-color 0.4s ease;
+}
+.scroll-cue:hover { border-color: var(--color-brand-300); background: rgba(255, 255, 255, 0.14); }
+.scroll-cue__dot {
+  width: 4px; height: 8px; border-radius: 999px; background: #fff;
+  animation: scroll-cue 2.2s var(--ease-out-expo) infinite;
+}
+@keyframes scroll-cue {
+  0% { transform: translateY(0); opacity: 0; }
+  25% { opacity: 1; }
+  75% { transform: translateY(14px); opacity: 0; }
+  100% { transform: translateY(14px); opacity: 0; }
+}
+
+/* ---------- Lightbox nativo ---------- */
+dialog.lightbox::backdrop { background: rgba(12, 10, 9, 0.92); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+dialog.lightbox[open] { animation: lb-in 0.45s var(--ease-out-expo); }
+@keyframes lb-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: none; } }
+
+/* ---------- Accesibilidad ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .scroll-cue__dot { animation: none; opacity: 1; }
+  .icon-float, .icon-tile::before, .depth-item, .sheen::after, .spot::before { transition-duration: 0.01ms !important; }
+  .group:hover .icon-float, .lift:hover .icon-float { transform: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .scroll-cue { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(12, 10, 9, 0.7); }
+  .glass-header, .glass-header[data-scrolled="true"] { background: #0c0a09; -webkit-backdrop-filter: none; backdrop-filter: none; }
+}

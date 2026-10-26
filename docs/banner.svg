@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-labelledby="t d">
+  <title id="t">Capítulo Cantera #75024</title>
+  <desc id="d">Banner animado del sitio del Capítulo Cantera de la Orden DeMolay</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c0a09"/>
+      <stop offset="1" stop-color="#3a1a00"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" x2="1">
+      <stop offset="0" stop-color="#9e4200"/>
+      <stop offset="1" stop-color="#ff6f00"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ff6f00" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#ff6f00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="320" rx="28" fill="url(#bg)"/>
+  <circle cx="1040" cy="150" r="230" fill="url(#glow)">
+    <animate attributeName="r" values="220;250;220" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <g opacity="0.12" stroke="#ffffff" fill="none" stroke-width="2">
+    <path d="M1000 60 L1140 130 L1140 220 Q1140 280 1070 310 Q1000 280 1000 220 Z"/>
+  </g>
+  <text x="80" y="150" font-family="Plus Jakarta Sans, Helvetica, Arial, sans-serif" font-size="70" font-weight="800" fill="#ffffff" letter-spacing="-2">
+    Capítulo Cantera
+    <animate attributeName="opacity" values="0;1" dur="0.9s" fill="freeze"/>
+  </text>
+  <text x="82" y="210" font-family="Plus Jakarta Sans, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#ffb691" letter-spacing="6">
+    #75024 · ORDEN DEMOLAY · BOLIVIA
+    <animate attributeName="opacity" values="0;1" begin="0.4s" dur="0.9s" fill="freeze"/>
+  </text>
+  <rect x="82" y="244" width="0" height="8" rx="4" fill="url(#bar)">
+    <animate attributeName="width" values="0;420;0" keyTimes="0;0.5;1" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0.22 1 0.36 1;0.22 1 0.36 1"/>
+  </rect>
+</svg>

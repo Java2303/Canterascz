@@ -1,0 +1,11 @@
+---
+// Logos de marca (Instagram y WhatsApp) que Lucide ya no incluye
+import { site } from '../data/site';
+
+interface Props {
+  name: 'instagram' | 'whatsapp';
+  class?: string;
+}
+const { name, class: className = '' } = Astro.props;
+---
+<svg class:list={['icon-float', className]} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" set:html={site.brandPaths[name]} />

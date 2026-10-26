@@ -1,0 +1,16 @@
+---
+// Encabezado de sección: etiqueta, título y bajada
+interface Props {
+  eyebrow?: string;
+  title: string;
+  text?: string;
+  align?: 'left' | 'center';
+}
+const { eyebrow, title, text, align = 'left' } = Astro.props;
+const center = align === 'center';
+---
+<div class:list={['max-w-3xl', center && 'mx-auto text-center']}>
+  {eyebrow && <p data-reveal class="mb-4 font-label text-xs font-bold uppercase tracking-[0.22em] text-brand-700">{eyebrow}</p>}
+  <h2 data-reveal data-delay="60" class="text-4xl font-bold md:text-6xl">{title}</h2>
+  {text && <p data-reveal data-delay="140" class="mt-5 text-lg leading-relaxed text-ink-600 md:text-xl">{text}</p>}
+</div>

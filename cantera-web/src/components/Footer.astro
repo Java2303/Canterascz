@@ -1,0 +1,48 @@
+---
+import { nav, site } from '../data/site';
+import Icon from './Icon.astro';
+import BrandIcon from './BrandIcon.astro';
+const year = new Date().getFullYear();
+---
+<footer class="relative overflow-hidden bg-ink-950 text-white">
+  <div class="pointer-events-none absolute -top-40 left-1/2 h-80 w-[60rem] -translate-x-1/2 rounded-full bg-brand-500/10 blur-3xl"></div>
+  <div class="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-3 md:px-8">
+    <div class="flex flex-col gap-6">
+      <div class="flex items-center gap-3">
+        <img src="img/logo.png" alt="" width="36" height="36" class="size-9 object-contain" />
+        <span class="font-display text-lg font-bold">{site.name}</span>
+      </div>
+      <p class="max-w-xs text-sm leading-relaxed text-white/60">
+        Forjando el futuro de Santa Cruz a través del liderazgo juvenil y los valores fraternales de la Orden DeMolay.
+      </p>
+      <div class="flex gap-3">
+        <a href={site.instagram} target="_blank" rel="noopener" aria-label="Instagram" class="grid size-10 place-items-center rounded-full bg-white/5 text-white/70 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-500 hover:text-white">
+          <BrandIcon name="instagram" class="size-5" />
+        </a>
+        <a href={site.whatsapp} target="_blank" rel="noopener" aria-label="WhatsApp" class="grid size-10 place-items-center rounded-full bg-white/5 text-white/70 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-500 hover:text-white">
+          <BrandIcon name="whatsapp" class="size-5" />
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="mb-6 font-label text-xs font-bold uppercase tracking-[0.2em] text-white/50">Navegación</h2>
+      <ul class="grid grid-cols-2 gap-3">
+        {nav.map((item) => (
+          <li><a href={item.href} class="text-sm text-white/70 transition-colors hover:text-brand-300">{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="mb-6 font-label text-xs font-bold uppercase tracking-[0.2em] text-white/50">Contacto</h2>
+      <ul class="flex flex-col gap-4 text-sm text-white/70">
+        <li class="flex items-start gap-3"><Icon name="MapPin" class="mt-0.5 size-4 text-brand-500" /> Santa Cruz de la Sierra, Bolivia</li>
+        <li class="flex items-start gap-3"><Icon name="Mail" class="mt-0.5 size-4 text-brand-500" /> <a href={`mailto:${site.email}`} class="break-all transition-colors hover:text-brand-300">{site.email}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="relative mx-auto max-w-7xl border-t border-white/5 px-5 py-6 text-center md:px-8 md:text-left">
+    <p class="font-label text-[11px] uppercase tracking-[0.18em] text-white/60">© {year} {site.name}. Miembro de DeMolay Internacional.</p>
+  </div>
+</footer>
