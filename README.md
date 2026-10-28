@@ -42,7 +42,9 @@
 ## Estructura
 
 ```text
-cantera-web/
+.github/workflows/deploy.yml  # Build y despliegue automático a GitHub Pages
+docs/banner.svg               # Banner de este README
+cantera-web/                  # El sitio (única fuente)
 ├── public/img/          # Fotos y logos (se sirven tal cual)
 ├── src/
 │   ├── components/      # Header, Footer, Carousel, PageHero, Icon…
@@ -51,19 +53,23 @@ cantera-web/
 │   ├── pages/           # index, quienes-somos, actividades, galeria, futbol7, ubicacion, contacto
 │   ├── scripts/         # carousel.ts y site.ts (movimiento e interacción)
 │   └── styles/global.css
-└── astro.config.mjs
+└── astro.config.mjs     # base '/Canterascz' para GitHub Pages
 ```
 
-> El directorio raíz del repositorio contiene además la versión estática original (HTML, `design.css`, `motion.js`, `icons.js`), que GitHub Pages publica directamente.
+## Despliegue
+
+Cada push a `main` ejecuta [`deploy.yml`](.github/workflows/deploy.yml): instala dependencias, corre `npm run build` dentro de `cantera-web/` y publica `dist/` en **https://java2303.github.io/Canterascz/**. GitHub Pages está configurado con *Source: GitHub Actions*.
+
+No subas `dist/` ni `.astro/` al repositorio: se generan en cada build y ya están en `.gitignore`.
 
 ## Cómo ejecutarlo
 
-Requisitos: Node.js 20 o superior.
+Requisitos: Node.js 22.22 o superior (ver `cantera-web/.nvmrc`).
 
 ```bash
 cd cantera-web
 npm install
-npm run dev       # desarrollo en http://localhost:4321
+npm run dev       # desarrollo en http://localhost:4321/Canterascz/
 npm run build     # genera dist/ con las 7 páginas
 npm run preview   # sirve dist/ localmente
 ```
