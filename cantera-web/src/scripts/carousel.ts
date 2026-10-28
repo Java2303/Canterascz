@@ -1,4 +1,6 @@
 // Carrusel con scroll-snap: dots, contador, flechas, teclado y escala de profundidad.
+import { animate } from 'motion';
+
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((root) => {
@@ -20,7 +22,7 @@ document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((root) => {
     const dot = document.createElement('button');
     dot.type = 'button';
     dot.setAttribute('aria-label', `Ir al elemento ${i + 1}`);
-    dot.className = 'h-2 rounded-full bg-current/30 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-current/60';
+    dot.className = 'carousel-dot';
     dot.addEventListener('click', () => goTo(i));
     dots.appendChild(dot);
   });
@@ -33,20 +35,16 @@ document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((root) => {
 
   function render(index: number) {
     const dotEls = Array.from(dots.children) as HTMLElement[];
-    dotEls.forEach((dot, i) => {
-      const active = i === index;
-      dot.classList.toggle('w-7', active);
-      dot.classList.toggle('bg-brand-500', active);
-      dot.classList.toggle('w-2', !active);
-      dot.classList.toggle('opacity-100', active);
-      dot.setAttribute('aria-current', active ? 'true' : 'false');
-    });
+    dotEls.forEach((dot, i) => dot.setAttribute('aria-current', i === index ? 'true' : 'false'));
     current.textContent = String(index + 1);
-    if (progress) progress.style.width = `${((index + 1) / total) * 100}%`;
+    if (progress) {
+      // Spring desde el valor actual: si el índice cambia a mitad de camino, la barra se redirige sin saltos
+      const scaleX = (index + 1) / total;
+      if (reduceMotion) progress.style.transform = `scaleX(${scaleX})`;
+      else animate(progress, { scaleX }, { type: 'spring', bounce: 0, visualDuration: 0.4 });
+    }
     prev.disabled = index === 0;
     next.disabled = index === total - 1;
-    prev.classList.toggle('opacity-35', index === 0);
-    next.classList.toggle('opacity-35', index === total - 1);
   }
 
   function goTo(i: number) {

@@ -17,23 +17,23 @@ const channels = [
   <section class="mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-32">
     <div class="grid gap-16 lg:grid-cols-5">
       <div class="lg:col-span-3">
-        <p data-reveal class="font-label text-xs font-bold uppercase tracking-[0.22em] text-brand-700">Nuestros canales</p>
-        <h2 data-reveal data-delay="60" class="mt-4 text-4xl font-bold md:text-5xl">Utiliza el canal que prefieras</h2>
-        <p data-reveal data-delay="120" class="mt-5 max-w-xl text-lg leading-relaxed text-ink-600">Siempre hay un hermano listo para ayudarte.</p>
+        <p data-reveal class="eyebrow text-brand-700">Nuestros canales</p>
+        <h2 data-reveal data-delay="60" class="type-section mt-4">Utiliza el canal que prefieras</h2>
+        <p data-reveal data-delay="120" class="type-lede mt-5 max-w-xl text-ink-600">Siempre hay un hermano listo para ayudarte.</p>
 
         <ul class="mt-12 space-y-4">
           {channels.map((c, i) => (
-            <li data-reveal data-delay={160 + i * 90}>
-              <a href={c.href} target={c.href.startsWith('mailto') ? undefined : '_blank'} rel="noopener" class="spot lift group flex items-center gap-6 rounded-3xl border border-stone-200 bg-white p-6 shadow-sm transition-all duration-500 hover:border-brand-500/40 hover:shadow-xl hover:shadow-brand-500/10 md:p-8">
-                <span class="icon-tile grid size-16 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-700 transition-all duration-500 group-hover:bg-brand-500 group-hover:text-white">
+            <li data-reveal data-delay={160 + i * 80}>
+              <a href={c.href} target={c.href.startsWith('mailto') ? undefined : '_blank'} rel="noopener" class="card card-link spot group flex items-center gap-5 p-6 md:gap-6 md:p-8" data-press="0.985">
+                <span class="icon-tile grid size-14 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-700 md:size-16">
                   {'icon' in c ? <Icon name={c.icon} class="size-7" /> : <BrandIcon name={c.brand} class="size-7" />}
                 </span>
                 <span class="flex-1">
-                  <span class="block font-label text-[11px] font-bold uppercase tracking-[0.18em] text-brand-700">{c.title}</span>
-                  <span class="mt-1 block break-all font-display text-lg font-bold md:text-xl">{c.value}</span>
-                  <span class="mt-1 block text-sm text-ink-600">{c.note}</span>
+                  <span class="eyebrow block text-brand-700">{c.title}</span>
+                  <span class="type-headline mt-1 block break-all">{c.value}</span>
+                  <span class="mt-1 block text-[0.9375rem] text-ink-600">{c.note}</span>
                 </span>
-                <Icon name="ArrowUpRight" class="size-6 shrink-0 text-stone-400 transition-all duration-500 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-brand-500" />
+                <Icon name="ArrowUpRight" class="btn-arrow-out size-6 shrink-0 text-ink-600 group-hover:text-brand-700" />
               </a>
             </li>
           ))}
@@ -41,13 +41,13 @@ const channels = [
       </div>
 
       <aside data-reveal class="lg:col-span-2">
-        <figure class="relative overflow-hidden rounded-[2rem] bg-ink-950 p-10 text-white md:p-12">
+        <figure class="relative overflow-hidden rounded-4xl bg-ink-950 p-8 text-white shadow-(--shadow-float) md:p-12">
           <div class="absolute -right-16 -top-16 size-64 rounded-full bg-brand-500/25 blur-3xl"></div>
           <img src="img/logo.png" alt="Logo Capítulo Cantera" loading="lazy" class="relative mx-auto mb-10 size-44 object-contain drop-shadow-2xl" />
-          <blockquote class="relative font-display text-2xl font-bold leading-snug">
+          <blockquote class="type-quote relative">
             “En Cantera encontré una familia que me inspira cada día a ser mejor.”
           </blockquote>
-          <p class="relative mt-6 text-white/70">¡Únete y vive esta experiencia con nosotros!</p>
+          <p class="relative mt-6 text-white/75">¡Únete y vive esta experiencia con nosotros!</p>
         </figure>
       </aside>
     </div>

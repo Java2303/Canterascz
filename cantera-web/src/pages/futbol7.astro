@@ -16,7 +16,7 @@ const milestones = [
   <!-- Legado -->
   <section class="mx-auto grid max-w-7xl gap-16 px-5 py-24 md:grid-cols-2 md:px-8 md:py-32">
     <SectionHeader eyebrow="Nuestro legado" title="Un legado de campeones" />
-    <div class="space-y-6 text-lg leading-relaxed text-ink-600">
+    <div class="type-lede space-y-6 text-ink-600">
       <p data-reveal>A lo largo de su historia, el Capítulo Cantera no solo ha destacado por su labor formativa, sino también por su espíritu competitivo. Nuestros hermanos han demostrado que los principios DeMolay también se viven en la cancha, a través del trabajo en equipo, la disciplina y el esfuerzo.</p>
       <p data-reveal data-delay="80">Este espíritu nos llevó a consagrarnos como bicampeones del Torneo Deportivo DeMolay en 2016 y a una victoria aplastante en la gestión II/2025, consiguiendo el tricampeonato de forma invicta.</p>
     </div>
@@ -25,17 +25,17 @@ const milestones = [
   <!-- Hitos: línea de tiempo -->
   <section class="bg-ink-950 py-24 text-white md:py-32">
     <div class="mx-auto max-w-7xl px-5 md:px-8">
-      <SectionHeader eyebrow="Hitos inolvidables" title="Tres momentos que nos definen" />
-      <ol class="relative mt-16 grid gap-6 md:grid-cols-3">
+      <SectionHeader eyebrow="Hitos inolvidables" title="Tres momentos que nos definen" tone="dark" />
+      <ol class="relative mt-12 grid gap-6 md:mt-16 md:grid-cols-3">
         {milestones.map((m, i) => (
-          <li data-reveal data-delay={i * 120} class="spot lift relative rounded-[2rem] border border-white/10 bg-white/[0.03] p-9">
+          <li data-reveal data-delay={i * 80} class="card-dark relative p-8 md:p-10">
             <span class="mb-8 grid size-12 place-items-center rounded-2xl bg-brand-500 text-white"><Icon name="Trophy" class="size-6" /></span>
-            <p class="font-label text-xs font-bold uppercase tracking-[0.18em] text-brand-300">{m.year}</p>
-            <p class="mt-3 text-lg leading-relaxed text-white/80">{m.text}</p>
+            <p class="eyebrow text-brand-300">{m.year}</p>
+            <p class="type-lede mt-3 text-white/80">{m.text}</p>
           </li>
         ))}
       </ol>
-      <blockquote data-reveal class="mx-auto mt-20 max-w-3xl text-center font-display text-2xl font-bold leading-snug md:text-4xl">
+      <blockquote data-reveal class="type-quote mx-auto mt-16 max-w-3xl text-center md:mt-24">
         “El Capítulo Cantera jamás ha perdido una final, un reflejo de nuestra hermandad y determinación.”
       </blockquote>
     </div>
@@ -44,13 +44,13 @@ const milestones = [
   <!-- Símbolos -->
   <section class="mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-32">
     <SectionHeader eyebrow="Símbolos de nuestra pasión" title="Nuestro escudo" text="Tres estrellas por nuestros campeonatos, la cruz de la Orden y los colores que defendemos con honor." />
-    <div class="mt-16 grid gap-6 md:grid-cols-2">
-      <figure data-reveal class="group relative aspect-[4/3] cursor-zoom-in overflow-hidden rounded-[2rem] shadow-xl" data-lightbox-src="img/campeonato2025-1.jpg" data-lightbox-title="Celebración del Campeonato">
-        <img src="img/campeonato2025-1.jpg" alt="Celebración del Campeonato" loading="lazy" class="size-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105" />
-        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-950/90 to-transparent p-7 font-display text-xl font-bold text-white">Celebración del campeonato</figcaption>
+    <div class="mt-12 grid gap-6 md:mt-16 md:grid-cols-2">
+      <figure data-reveal class="group relative aspect-[4/3] cursor-zoom-in overflow-hidden rounded-4xl shadow-(--shadow-raised) transition-shadow duration-300 hover:shadow-(--shadow-float)" data-press="0.985" data-lightbox-src="img/campeonato2025-1.jpg" data-lightbox-title="Celebración del Campeonato">
+        <img src="img/campeonato2025-1.jpg" alt="Celebración del Campeonato" loading="lazy" class="media-zoom size-full object-cover" />
+        <figcaption class="type-headline pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-950/90 to-transparent p-7 pt-16 text-white">Celebración del campeonato</figcaption>
       </figure>
-      <figure data-reveal data-delay="120" class="spot grid aspect-[4/3] place-items-center overflow-hidden rounded-[2rem] bg-stone-100 p-10">
-        <img src="img/escudo.png" alt="Escudo de Fútbol 7 del Capítulo Cantera" loading="lazy" class="max-h-full max-w-[280px] object-contain drop-shadow-xl transition-transform duration-700 hover:scale-105" />
+      <figure data-reveal data-delay="80" class="grid aspect-[4/3] place-items-center overflow-hidden rounded-4xl bg-stone-100 p-10">
+        <img src="img/escudo.png" alt="Escudo de Fútbol 7 del Capítulo Cantera" loading="lazy" class="max-h-full max-w-[280px] object-contain drop-shadow-xl" />
       </figure>
     </div>
   </section>

@@ -14,5 +14,9 @@
     "lucide-astro": "^0.556.0",
     "motion": "^14.6.0",
     "tailwindcss": "^4.3.3"
+  },
+  "engines": {
+    "node": ">=22.22.0",
+    "npm": ">=10"
   }
 }
