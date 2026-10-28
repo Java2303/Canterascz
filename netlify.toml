@@ -1,0 +1,4 @@
+[build]
+  base = "cantera-web"
+  command = "npm run build"
+  publish = "dist"

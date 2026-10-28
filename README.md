@@ -60,6 +60,8 @@ cantera-web/                  # El sitio (única fuente)
 
 Cada push a `main` ejecuta [`deploy.yml`](.github/workflows/deploy.yml): instala dependencias, corre `npm run build` dentro de `cantera-web/` y publica `dist/` en **https://java2303.github.io/Canterascz/**. GitHub Pages está configurado con *Source: GitHub Actions*.
 
+El sitio también se publica en **Netlify**, configurado en [`netlify.toml`](netlify.toml) (construye `cantera-web/` y publica `dist/`). `astro.config.mjs` detecta Netlify con la variable `NETLIFY` y sirve el sitio en la raíz del dominio en vez de en `/Canterascz/`.
+
 No subas `dist/` ni `.astro/` al repositorio: se generan en cada build y ya están en `.gitignore`.
 
 ## Cómo ejecutarlo
