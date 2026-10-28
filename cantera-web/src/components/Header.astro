@@ -7,7 +7,7 @@ const isActive = (href: string) => (href === 'index.html' ? current === '' || cu
 ---
 <header class="glass-header fixed inset-x-0 top-0 z-50 text-white" data-site-header>
   <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 md:px-8 xl:gap-8" aria-label="Principal">
-    <a href="index.html" class="flex items-center gap-3 rounded-xl">
+    <a href="index.html" class="flex shrink-0 items-center gap-3 rounded-xl">
       <img src="img/logo.png" alt="Logo Capítulo Cantera" width="44" height="44" class="size-11 object-contain" />
       <span class="whitespace-nowrap font-display text-[1.0625rem] font-bold leading-[1.2] tracking-[-0.01em] xl:text-lg">
         Capítulo Cantera<br /><span class="font-semibold text-white/65">#75024</span>
@@ -20,7 +20,7 @@ const isActive = (href: string) => (href === 'index.html' ? current === '' || cu
           <a
             href={item.href}
             aria-current={isActive(item.href) ? 'page' : undefined}
-            class="nav-link block whitespace-nowrap rounded-full px-4 py-3 font-label text-[0.8125rem] font-semibold uppercase tracking-[0.1em] xl:px-3 xl:py-2 xl:text-[0.78rem] xl:tracking-[0.08em] 2xl:px-4 2xl:text-[0.8125rem] 2xl:tracking-[0.12em]"
+            class="nav-link block whitespace-nowrap rounded-full px-4 py-3 font-label text-[0.8125rem] font-semibold uppercase tracking-[0.1em] xl:px-3 xl:py-2 xl:text-[0.78rem] xl:tracking-[0.08em]"
           >
             {item.label}
           </a>

@@ -135,6 +135,11 @@ if (!reduceMotion && parallaxEls.length) {
   apply();
 }
 
+// 6b. Videos con data-autoplay: arrancan en silencio solo si no se pidió reducir movimiento
+if (!reduceMotion) {
+  document.querySelectorAll<HTMLVideoElement>('video[data-autoplay]').forEach((v) => v.play().catch(() => {}));
+}
+
 // 7. Lightbox nativo: la imagen crece desde su miniatura y vuelve a ella al cerrar
 const dialog = document.querySelector<HTMLDialogElement>('[data-lightbox]');
 if (dialog) {
